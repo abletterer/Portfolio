@@ -76,6 +76,22 @@ body {
     width:auto;
 }
 
+.logo-title img:hover{
+    text-align:center;
+    width:auto;
+    cursor:pointer;
+}
+
+.logo-title span.social {
+    float:right;
+    padding-top:5px;
+    width:auto;
+}
+
+.logo-title span.social img {
+    padding-left:10px;
+}
+
 .logo-title h1 {
     font-size:100px;
     background: -moz-linear-gradient(left, #f5f5f5 0%, #e5e5e5 100%); /* FF3.6+ */
