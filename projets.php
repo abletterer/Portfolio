@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Arnaud Bletterer">
-    <link rel="shortcut icon" href="bootstrap/assets/ico/favicon.png">
+    <link rel="shortcut icon" href="img/abletterer-logo-mini.png">
 
     <title>Projets - ABletterer</title>
 
