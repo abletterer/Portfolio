@@ -1,3 +1,16 @@
+<?php 
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=Portfolio', 'root', 'tarask');
+}
+catch (Exception $e) {
+    echo 'Erreur : '.$e->getMessage().'<br />';
+    echo 'N° : '.$e->getCode();
+}
+
+$stmt = $pdo->query("SELECT * FROM Projet");
+
+$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,26 +39,22 @@
 <div class="container">
 
 <?php require_once("header.php"); ?>
-    
-    
 
     <!-- Example row of columns -->
       <div class="row">
-        <div class="col-xs-6 col-sm-4 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="col-xs-6 col-sm-4 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
-        </div>
+          
+          
+<?php 
+foreach($projets as $projet) { ?>
+    <div class="col-xs-6 col-sm-4 col-lg-4">
+    <h2><?php echo utf8_decode($projet["nomProjet"]); ?></h2>
+      <p><?php echo htmlspecialchars($projet["descriptionProjet"], ENT_QUOTES); ?></p>
+      <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+    </div>
+
+<?php }
+
+?>
       </div><!-- /row-->
     
     <?php require_once("footer.php"); ?>    
