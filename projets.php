@@ -1,6 +1,6 @@
 <?php 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=Portfolio', 'root', 'tarask');
+    $pdo = new PDO('mysql:host=localhost;dbname=Portfolio', 'root', 'tarask', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 }
 catch (Exception $e) {
     echo 'Erreur : '.$e->getMessage().'<br />';
@@ -46,10 +46,11 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
           
 <?php 
 foreach($projets as $projet) { ?>
+          
     <div class="col-xs-6 col-sm-4 col-lg-4">
-    <h2><?php echo utf8_decode($projet["nomProjet"]); ?></h2>
-      <p><?php echo htmlspecialchars($projet["descriptionProjet"], ENT_QUOTES); ?></p>
-      <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+    <h2><?php echo $projet["nomProjet"]; ?></h2>
+      <p><?php echo $projet["descriptionProjet"]; ?></p>
+      <p><a class="btn btn-primary" href="#">En savoir plus... &raquo;</a></p>
     </div>
 
 <?php }
