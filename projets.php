@@ -47,10 +47,10 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php 
 foreach($projets as $projet) { ?>
           
-    <div class="col-xs-6 col-sm-4 col-lg-4">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <h2><?php echo $projet["nomProjet"]; ?></h2>
       <p><?php echo $projet["descriptionProjet"]; ?></p>
-      <p><a class="btn btn-primary" href="#">En savoir plus... &raquo;</a></p>
+      <p><a class="btn btn-primary" href="#">En savoir plus &raquo;</a></p>
     </div>
 
 <?php }
