@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 02 Septembre 2013 à 09:46
--- Version du serveur: 5.5.31
--- Version de PHP: 5.4.16
+-- Généré le: Mer 04 Septembre 2013 à 18:53
+-- Version du serveur: 5.5.24-log
+-- Version de PHP: 5.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,18 +17,45 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `Portfolio`
+-- Base de données: `portfolio`
 --
-CREATE DATABASE IF NOT EXISTS `Portfolio` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `Portfolio`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Projet`
+-- Structure de la table `competence`
 --
 
-CREATE TABLE IF NOT EXISTS `Projet` (
+CREATE TABLE IF NOT EXISTS `competence` (
+  `idCompetence` int(11) NOT NULL AUTO_INCREMENT,
+  `nomCompetence` varchar(50) NOT NULL,
+  `categorieCompetence` varchar(50) NOT NULL,
+  `noteCompetence` tinyint(4) NOT NULL,
+  PRIMARY KEY (`idCompetence`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Contenu de la table `competence`
+--
+
+INSERT INTO `competence` (`idCompetence`, `nomCompetence`, `categorieCompetence`, `noteCompetence`) VALUES
+(1, 'PHP', 'Web', 80),
+(2, 'HTML5', 'Web', 70),
+(3, 'CSS3', 'Web', 70),
+(4, 'JavaScript', 'Web', 80),
+(5, 'Java', 'Génie Logiciel', 75),
+(6, 'C#', 'Génie Logiciel', 60),
+(7, 'C', 'Génie Logiciel', 70),
+(8, 'C++', 'Génie Logiciel', 75),
+(9, 'Coq', 'Génie Logiciel', 50);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `projet`
+--
+
+CREATE TABLE IF NOT EXISTS `projet` (
   `idProjet` int(11) NOT NULL AUTO_INCREMENT,
   `nomProjet` varchar(50) NOT NULL,
   `descriptionProjet` text NOT NULL,
@@ -39,12 +66,12 @@ CREATE TABLE IF NOT EXISTS `Projet` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Contenu de la table `Projet`
+-- Contenu de la table `projet`
 --
 
-INSERT INTO `Projet` (`idProjet`, `nomProjet`, `descriptionProjet`, `imageProjet`, `urlProjet`) VALUES
-(1, 'Premier projet', 'Le premier projet que j''ai réalisé', 'Chemin/Vers/Limage/PremierProjet', 'Chemin/Vers/LURL/PremierProjet'),
-(2, 'Deuxieme projet', 'Le Deuxieme projet que j''ai réalisé', 'Chemin/Vers/Limage/DeuxiemeProjet', 'Chemin/Vers/LURL/DeuxiemeProjet');
+INSERT INTO `projet` (`idProjet`, `nomProjet`, `descriptionProjet`, `imageProjet`, `urlProjet`) VALUES
+(1, 'Premier projet', 'Le premier projet que j''ai réalisé', 'ImageTest.png', 'Chemin/Vers/LURL/PremierProjet'),
+(2, 'Deuxieme projet', 'Le Deuxieme projet que j''ai réalisé', 'ImageTest.png', 'Chemin/Vers/LURL/DeuxiemeProjet');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
