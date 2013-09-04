@@ -8,7 +8,7 @@ catch (Exception $e) {
     echo 'N° : '.$e->getCode();
 }
 
-$stmt = $pdo->query("SELECT * FROM Competence ORDER BY categorieCompetence");
+$stmt = $pdo->query("SELECT * FROM competence ORDER BY categorieCompetence");
 
 $competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $lastCategorie = "";

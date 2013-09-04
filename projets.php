@@ -8,7 +8,7 @@ catch (Exception $e) {
     echo 'N° : '.$e->getCode();
 }
 
-$stmt = $pdo->query("SELECT * FROM Projet");
+$stmt = $pdo->query("SELECT * FROM projet");
 
 $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
