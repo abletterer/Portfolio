@@ -3,6 +3,11 @@
     src: url('BebasNeue.otf');
 }
 
+@font-face {
+    font-family: TraditionellSans;
+    src: url('TraditionellSansBold.ttf');
+}
+
 body {
     padding-top: 20px;
 	padding-bottom: 60px;
@@ -109,10 +114,22 @@ body {
 
 .footer,.btn {
     letter-spacing:1px;
-    font-size:16px;
+    font-size:18px;
 }
     
 
 body {
     background-image: url('../img/lghtmesh.png');
+}
+
+h1 {
+    font-size: 100px;
+    text-align:center;
+    background-image: url('../img/profil-h1.png');
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.jumbotron h1 {
+    background-image:none;
 }

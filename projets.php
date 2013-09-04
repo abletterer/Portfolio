@@ -41,15 +41,15 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php require_once("header.php"); ?>
 
-    <!-- Example row of columns -->
+    <h1>Projets</h1>
       <div class="row">
           
 <?php 
 foreach($projets as $projet) { ?>
           
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align:center;">
             <h2><?php echo $projet["nomProjet"];?></h2>
-            <img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="margin-bottom:15px;" width="100%"/>
+            <img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="margin-bottom:15px;" width="100%" class="img-thumbnail"/>
             <p><a class="btn btn-primary" href="#">En savoir plus &raquo;</a></p>
         </div>
 
