@@ -1,6 +1,7 @@
 <?php 
+require_once("./identifiants.php");
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=Portfolio', 'root', 'tarask', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $pdo = new PDO($stringConn, $userConn, $mdpConn, $argsConn);
 }
 catch (Exception $e) {
     echo 'Erreur : '.$e->getMessage().'<br />';
@@ -43,20 +44,19 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Example row of columns -->
       <div class="row">
           
-          
 <?php 
 foreach($projets as $projet) { ?>
           
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <h2><?php echo $projet["nomProjet"]; ?></h2>
-      <p><?php echo $projet["descriptionProjet"]; ?></p>
-      <p><a class="btn btn-primary" href="#">En savoir plus &raquo;</a></p>
-    </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2><?php echo $projet["nomProjet"];?></h2>
+            <img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="margin-bottom:15px;" width="100%"/>
+            <p><a class="btn btn-primary" href="#">En savoir plus &raquo;</a></p>
+        </div>
 
 <?php }
 
 ?>
-      </div><!-- /row-->
+    </div><!-- /row-->
     
     <?php require_once("footer.php"); ?>    
     

@@ -1,3 +1,18 @@
+<?php 
+require_once("./identifiants.php");
+try {
+    $pdo = new PDO($stringConn, $userConn, $mdpConn, $argsConn);
+}
+catch (Exception $e) {
+    echo 'Erreur : '.$e->getMessage().'<br />';
+    echo 'N° : '.$e->getCode();
+}
+
+$stmt = $pdo->query("SELECT * FROM Competence ORDER BY categorieCompetence");
+
+$competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$lastCategorie = "";
+?>
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +41,40 @@
 <div class="container">
 
 <?php require_once("header.php"); ?>
+    
+    <h1>Compétences</h1>
+    <div class="row">
+
+<?php foreach($competences as $competence) {
+    if($lastCategorie=="") {
+        //Première itération
+        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+    }
+    
+    if($competence["categorieCompetence"]!=$lastCategorie) { 
+        //Changement de catégorie
+        if($lastCategorie!="") echo "</div><div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+        $lastCategorie = $competence["categorieCompetence"];
+        echo "<h2 style='text-align:center;'>".$lastCategorie."</h2>";
+    }
+    
+    if($competence["noteCompetence"]>70) $typeBar = "progress-bar-success";
+    elseif($competence["noteCompetence"]>40) $typeBar = "progress-bar-warning";
+    else $typeBar = "progress-bar-danger";
+?>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p style="margin:0px; letter-spacing:1px; font-size:18px"><?php echo $competence['nomCompetence']; ?></p>
+            <div class="progress progress-striped" onmouseover="this.className='progress progress-striped active'" onmouseout="this.className='progress progress-striped'">
+                <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $competence['noteCompetence']; ?>%">
+                    <span class="sr-only"><?php echo $competence['noteCompetence']; ?>% Complete (success)</span>
+                </div>
+            </div>
+        </div>
+        
+<?php }
+    if($lastCategorie!="") echo "</div>";   //Si au moins un élément a été trouvé dans la table
+;?>
+    </div>
     
 <?php require_once("footer.php"); ?>  
     

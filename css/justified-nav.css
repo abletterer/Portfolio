@@ -29,10 +29,10 @@ body {
     border: 1px solid #ccc;
 }
 .nav-justified > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     color: #777;
-    font-weight: bold;
+    font-size:30px;
     text-align: center;
     border-bottom: 1px solid #d5d5d5;
     background-image: url("../img/darkmesh.png");
