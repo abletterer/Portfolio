@@ -9,8 +9,11 @@ catch (Exception $e) {
 }
 
 $stmt = $pdo->query("SELECT * FROM competence ORDER BY categorieCompetence");
-
 $competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->query("SELECT * FROM experience ORDER BY dateDebutExperience");
+$experiences = $stmt->fetchAll(PDO::FETCH_BOTH);
+
 $lastCategorie = "";
 ?>
 <html lang="en"><head>
@@ -42,7 +45,14 @@ $lastCategorie = "";
 
 <?php require_once("header.php"); ?>
     
-    <h1>Compétences</h1>
+<?php 
+    /*
+    *
+    * Partie COMPETENCES
+    *
+    */
+?>
+    <span class="title-h1"><h1>Compétences</h1></span>
     <div class="row">
 
 <?php foreach($competences as $competence) {
@@ -64,8 +74,8 @@ $lastCategorie = "";
 ?>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <p style="margin:0px; letter-spacing:1px; font-size:18px"><?php echo $competence['nomCompetence']; ?></p>
-            <div class="progress progress-striped" onmouseover="this.className='progress progress-striped active'" onmouseout="this.className='progress progress-striped'">
-                <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $competence['noteCompetence']; ?>%">
+            <div class="progress progress-striped" onmouseover="this.className='progress progress-striped active'" onmouseout="this.className='progress progress-striped'" style="height:10px;">
+                <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $competence['noteCompetence']; ?>%; height:10px;">
                     <span class="sr-only"><?php echo $competence['noteCompetence']; ?>% Complete (success)</span>
                 </div>
             </div>
@@ -75,6 +85,55 @@ $lastCategorie = "";
     if($lastCategorie!="") echo "</div>";   //Si au moins un élément a été trouvé dans la table
 ;?>
     </div>
+    
+   <?php /*
+    *
+    * Partie EXPERIENCE PROFESSIONNELLE
+    *
+    */ ?>
+    <span class="title-h1"><h1>Expérience professionnelle</h1></span>
+    <!-- TABLEAU D'EXPERIENCE-->
+    <table class="table table-hover">
+        <thead>
+<?
+    $colonnes = array_keys($experiences[0]);
+    $nbcolonnes = 0;
+    foreach($colonnes as $colonne) {
+        ++$nbcolonnes;
+        if(!is_numeric($colonne) && $colonne!="idExperience") {
+            switch($colonne) {
+            case "nomExperience" : 
+                echo "<th></th>";
+            break;
+            case "dateDebutExperience" : 
+                echo "<th>Debut</th>";
+            break;
+            case "dateFinExperience" : 
+                echo "<th>Fin</th>";
+            break;
+            case "employeurExperience" : 
+                echo "<th>Employeur</th>";
+            break;
+            case "emplacementExperience" : 
+                echo "<th>Emplacement</th>";
+            break;
+            }
+        }
+    }        
+?>
+        </thead>
+        <tbody>
+<?php
+        foreach($experiences as $experience) {
+            echo "<tr>";
+            for($i=1;$i<$nbcolonnes/2;$i++)
+                echo "<td>".$experience[$i]."</td>";
+            echo "</tr>";
+        }
+?>
+        </tbody>
+    </table>
+    
     
 <?php require_once("footer.php"); ?>  
     

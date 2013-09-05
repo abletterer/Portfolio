@@ -41,7 +41,9 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php require_once("header.php"); ?>
 
-    <h1>Projets</h1>
+    <span class="title-h1">
+        <h1>Projets</h1>
+    </span>
       <div class="row">
           
 <?php 

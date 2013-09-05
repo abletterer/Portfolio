@@ -122,12 +122,11 @@ body {
     background-image: url('../img/lghtmesh.png');
 }
 
-h1 {
-    font-size: 100px;
+span.title-h1 h1{
+    font-size: 80px;
     text-align:center;
     background-image: url('../img/profil-h1.png');
-    background-repeat:no-repeat;
-    background-position:center;
+    height:80px;
 }
 
 .jumbotron h1 {
