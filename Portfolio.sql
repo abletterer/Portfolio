@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 04 Septembre 2013 à 18:53
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.4.3
+-- Généré le: Jeu 05 Septembre 2013 à 21:22
+-- Version du serveur: 5.5.31
+-- Version de PHP: 5.4.16
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `portfolio`
 --
+CREATE DATABASE IF NOT EXISTS `portfolio` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `portfolio`;
 
 -- --------------------------------------------------------
 
@@ -52,6 +54,45 @@ INSERT INTO `competence` (`idCompetence`, `nomCompetence`, `categorieCompetence`
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `competenceExperience`
+--
+
+CREATE TABLE IF NOT EXISTS `competenceExperience` (
+  `idCompetenceExperience` int(11) NOT NULL AUTO_INCREMENT,
+  `idCompetence` int(11) NOT NULL,
+  `idExperience` int(11) NOT NULL,
+  PRIMARY KEY (`idCompetenceExperience`,`idCompetence`,`idExperience`),
+  KEY `FK_COMPETENCE_COMPETENCEEXPERIENCE` (`idCompetence`),
+  KEY `FK_EXPERIENCE_COMPETENCEEXPERIENCE` (`idExperience`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `experience`
+--
+
+CREATE TABLE IF NOT EXISTS `experience` (
+  `idExperience` int(11) NOT NULL AUTO_INCREMENT,
+  `nomExperience` varchar(50) NOT NULL,
+  `dateDebutExperience` date NOT NULL,
+  `dateFinExperience` date DEFAULT NULL,
+  `employeurExperience` varchar(50) NOT NULL,
+  `emplacementExperience` varchar(50) NOT NULL,
+  PRIMARY KEY (`idExperience`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `experience`
+--
+
+INSERT INTO `experience` (`idExperience`, `nomExperience`, `dateDebutExperience`, `dateFinExperience`, `employeurExperience`, `emplacementExperience`) VALUES
+(1, 'Premiere experience', '2013-09-04', '2013-09-05', 'Premier employeur', 'Premier emplacement'),
+(2, 'Deuxieme experience', '2013-09-02', '2013-09-03', 'Deuxième employeur', 'Deuxième emplacement');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `projet`
 --
 
@@ -72,6 +113,17 @@ CREATE TABLE IF NOT EXISTS `projet` (
 INSERT INTO `projet` (`idProjet`, `nomProjet`, `descriptionProjet`, `imageProjet`, `urlProjet`) VALUES
 (1, 'Premier projet', 'Le premier projet que j''ai réalisé', 'ImageTest.png', 'Chemin/Vers/LURL/PremierProjet'),
 (2, 'Deuxieme projet', 'Le Deuxieme projet que j''ai réalisé', 'ImageTest.png', 'Chemin/Vers/LURL/DeuxiemeProjet');
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `competenceExperience`
+--
+ALTER TABLE `competenceExperience`
+  ADD CONSTRAINT `FK_EXPERIENCE_COMPETENCEEXPERIENCE` FOREIGN KEY (`idExperience`) REFERENCES `experience` (`idExperience`),
+  ADD CONSTRAINT `FK_COMPETENCE_COMPETENCEEXPERIENCE` FOREIGN KEY (`idCompetence`) REFERENCES `competence` (`idCompetence`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
