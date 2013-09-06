@@ -17,32 +17,6 @@ $experiences = $stmt->fetchAll(PDO::FETCH_BOTH);
 
 $lastCategorie = "";
 ?>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Arnaud Bletterer">
-    <link rel="shortcut icon" href="img/abletterer-logo-mini.png">
-
-    <title>CV - ABletterer</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/justified-nav.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-<div class="container">
 
 <?php require_once("header.php"); ?>
     
@@ -59,12 +33,12 @@ $lastCategorie = "";
 <?php foreach($competences as $competence) {
     if($lastCategorie=="") {
         //Première itération
-        echo "<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+        echo "<div class='col-xs-6'>";
     }
     
     if($competence["categorieCompetence"]!=$lastCategorie) { 
         //Changement de catégorie
-        if($lastCategorie!="") echo "</div><div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>";
+        if($lastCategorie!="") echo "</div><div class='col-xs-6'>";
         $lastCategorie = $competence["categorieCompetence"];
         echo "<h2 style='text-align:center;'>".$lastCategorie."</h2>";
     }
@@ -73,7 +47,7 @@ $lastCategorie = "";
     elseif($competence["noteCompetence"]>40) $typeBar = "progress-bar-warning";
     else $typeBar = "progress-bar-danger";
 ?>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-6">
             <p style="margin:0px; letter-spacing:1px; font-size:18px"><?php echo $competence['nomCompetence']; ?></p>
             <div class="progress progress-striped" onmouseover="this.className='progress progress-striped active'" onmouseout="this.className='progress progress-striped'" style="height:10px;">
                 <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $competence['noteCompetence']; ?>%; height:10px;">
@@ -87,16 +61,16 @@ $lastCategorie = "";
 ;?>
     </div>
     
-   <?php /*
-    *
-    * Partie EXPERIENCE PROFESSIONNELLE
-    *
-    */ ?>
+<?php /*
+*
+* Partie EXPERIENCE PROFESSIONNELLE
+*
+*/ ?>
     <span class="title-h1"><h1>Expérience professionnelle</h1></span>
     <!-- TABLEAU D'EXPERIENCE-->
     <table class="table table-hover">
         <thead>
-<?
+<?php
     $colonnes = array_keys($experiences[0]);
     $nbcolonnes = 0;
     foreach($colonnes as $colonne) {
@@ -107,7 +81,7 @@ $lastCategorie = "";
                 echo "<th></th>";
             break;
             case "dateDebutExperience" : 
-                echo "<th>Debut</th>";
+                echo "<th>Début</th>";
             break;
             case "dateFinExperience" : 
                 echo "<th>Fin</th>";
@@ -136,25 +110,4 @@ $lastCategorie = "";
     </table>
     
     
-<?php require_once("footer.php"); ?>  
-    
-</div> <!-- /container -->
-
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/bootstrap-transition.js"></script>
-<script src="../assets/js/bootstrap-alert.js"></script>
-<script src="../assets/js/bootstrap-modal.js"></script>
-<script src="../assets/js/bootstrap-dropdown.js"></script>
-<script src="../assets/js/bootstrap-scrollspy.js"></script>
-<script src="../assets/js/bootstrap-tab.js"></script>
-<script src="../assets/js/bootstrap-tooltip.js"></script>
-<script src="../assets/js/bootstrap-popover.js"></script>
-<script src="../assets/js/bootstrap-button.js"></script>
-<script src="../assets/js/bootstrap-collapse.js"></script>
-<script src="../assets/js/bootstrap-carousel.js"></script>
-<script src="../assets/js/bootstrap-typeahead.js"></script>
-
-</body></html>
+<?php require_once("footer.php"); ?>
