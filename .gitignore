@@ -225,4 +225,4 @@ pip-log.txt
 ## PHP
 #############
 
-identifiants.php    #Différents pour chaque serveur
+./identifiants.php
