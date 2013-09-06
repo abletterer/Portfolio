@@ -2,6 +2,7 @@
 require_once("./identifiants.php");
 try {
     $pdo = new PDO($stringConn, $userConn, $mdpConn, $argsConn);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (Exception $e) {
     echo 'Erreur : '.$e->getMessage().'<br />';
