@@ -5,7 +5,6 @@
     <meta name="description" content="">
     <meta name="author" content="Arnaud Bletterer">
     <link rel="shortcut icon" href="img/abletterer-logo-mini.png">
-
 <?php 
     switch($nom_page) {
     case "index.php" : echo "<title>Accueil - ABletterer</title>";
@@ -24,7 +23,7 @@
 ?>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/justified-nav.css" rel="stylesheet">

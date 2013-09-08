@@ -27,7 +27,7 @@ $lastCategorie = "";
     *
     */
 ?>
-    <span class="title-h1"><h1>Compétences</h1></span>
+    <span class="title-h1-activable"><h1>Compétences<img class="fleche-bas" src="img/fleche-bas.gif"/><input type="hidden" value='inactive'/></h1></span>
     <div class="row">
 
 <?php foreach($competences as $competence) {
@@ -66,7 +66,7 @@ $lastCategorie = "";
 * Partie EXPERIENCE PROFESSIONNELLE
 *
 */ ?>
-    <span class="title-h1"><h1>Expérience professionnelle</h1></span>
+    <span class="title-h1-activable"><h1>Expérience professionnelle<img class="fleche-bas" src="img/fleche-bas.gif"/><input type="hidden" value='inactive'/></h1></span>
     <!-- TABLEAU D'EXPERIENCE-->
     <table class="table table-hover">
         <thead>

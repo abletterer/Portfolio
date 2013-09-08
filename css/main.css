@@ -127,11 +127,22 @@ body {
     background-image: url('../img/lghtmesh.png');
 }
 
-span.title-h1 h1{
+.title-h1 h1, .title-h1-activable h1 {
     font-size: 80px;
     text-align:center;
     background-image: url('../img/profil-h1.png');
     height:80px;
+	width:100%;
+}
+
+.title-h1 img, .title-h1-activable img {
+	width:64px;
+	height:64px;
+	float:right;
+	margin-top:8px;
+	margin-bottom:8px;
+	margin-right:8px;
+	cursor:pointer;
 }
 
 h2 {
@@ -139,13 +150,25 @@ h2 {
 	color:#499ca4;
 }
 
-table,p,address,input,label,textarea {
+table,p,address,input,label,textarea,.btn {
 	font-family:TraditionellSans;
 	font-size:20px;
 }
 
 p {
 	text-indent:2em;
+}
+
+p a {
+	text-indent:0;
+}
+
+div a {
+	text-indent:0;
+}
+
+.footer p {
+	text-indent:0;
 }
 
 th {
@@ -156,4 +179,16 @@ th {
 
 .jumbotron h1 {
     background-image:none;
+}
+
+.modal-content {
+	background-image: url('../img/lghtmesh.png');
+}
+
+.modal-body{
+	border-top: 1px solid #d5d5d5;
+}
+
+.modal-footer{
+	border-top: 1px solid #d5d5d5;
 }

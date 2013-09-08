@@ -1,5 +1,6 @@
 <?php 
 require_once("./identifiants.php");
+
 try {
     $pdo = new PDO($stringConn, $userConn, $mdpConn, $argsConn);
 }
@@ -8,30 +9,52 @@ catch (Exception $e) {
     echo 'N° : '.$e->getCode();
 }
 
-$stmt = $pdo->query("SELECT * FROM projet");
-
-$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
-<?php require_once("header.php"); ?>
-
-    <span class="title-h1">
-        <h1>Projets</h1>
-    </span>
-    <div class="row">
-          
-<?php 
-foreach($projets as $projet) { ?>
-          
-        <div class="col-xs-6" style="text-align:center;">
-            <h2><?php echo $projet["nomProjet"];?></h2>
-            <div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" width="100%" class="img-thumbnail"/></div>
-            <p><a class="btn btn-primary" href="#">En savoir plus &raquo;</a></p>
-        </div>
-
-<?php }
-
-?>
-    </div><!-- /row-->
+require_once("header.php");
+	$stmt = $pdo->query("SELECT * FROM projet");
+	
+	$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	?>
+	
+		<span class="title-h1">
+			<h1>Projets</h1>
+		</span>
+		<div class="row">
+			  
+	<?php 
+	foreach($projets as $projet) { ?>
+			  
+			<div class="col-xs-6" style="text-align:center;">
+				<h2><?php echo $projet["nomProjet"];?></h2>
+				<div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" width="100%" class="img-thumbnail"/></div>
+			
+				<!-- Bouton de déclencement -->
+				<div><a data-toggle="modal" href="#myModal<?php echo $projet["idProjet"]; ?>" class="btn btn-primary btn-lg">En savoir plus &raquo;</a></div>
+				
+				<!-- Page de présentation du projet -->
+				<div class="modal fade" id="myModal<?php echo $projet["idProjet"]; ?>" role="dialog" aria-labelledby="myModalLabel<?php echo $projet["idProjet"]; ?>" aria-hidden="true" style="width:100%;">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h2 class="modal-title"><?php echo $projet["nomProjet"]; ?></h2>
+							</div>
+							<div class="modal-body">
+								<p style="text-indent:0;"><?php echo $projet["descriptionProjet"];?></p>
+								<div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" width="100%" class="img-thumbnail"/></div>
+							</div>
+							<div class="modal-footer rows" style="text-align:left;">
+								<div class="col-xs-6">
+								<p style="text-indent:0;">Réalisé par : <?php echo $projet["auteurProjet"]?></p></div>
+								<div class="col-xs-6"><p><a class="btn btn-lg btn-success" href="./Projets/<?php echo $projet["urlProjet"]?>">Télécharger les sources</a></p></div>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+			</div>
+	
+	<?php }
+	
+	?>
+		</div><!-- /row-->
     
-<?php require_once("footer.php"); ?>    
+<?php require_once("footer.php"); ?>   

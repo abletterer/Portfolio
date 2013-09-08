@@ -5383,7 +5383,7 @@ body.modal-open,
   -webkit-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
-.fade.in {
+.fade,.in {
   opacity: 1;
 }
 .collapse {
