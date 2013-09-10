@@ -122,12 +122,11 @@ body {
     font-size:20px;
 }
     
-
 body {
     background-image: url('../img/lghtmesh.png');
 }
 
-.title-h1 h1, .title-h1-activable h1 {
+.title-h1 h1, .title-h1-activable h1, .title-h1-activable-first h1{
     font-size: 80px;
     text-align:center;
     background-image: url('../img/profil-h1.png');
@@ -135,7 +134,7 @@ body {
 	width:100%;
 }
 
-.title-h1 img, .title-h1-activable img {
+.title-h1 img, .title-h1-activable img, .title-h1-activable-first img {
 	width:64px;
 	height:64px;
 	float:right;

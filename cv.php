@@ -27,7 +27,7 @@ $lastCategorie = "";
     *
     */
 ?>
-    <span class="title-h1-activable"><h1>Compétences<img class="fleche-bas" src="img/fleche-bas.gif"/><input type="hidden" value='inactive'/></h1></span>
+    <span class="title-h1-activable-first"><h1>Compétences<img class="fleche-bas-first" src="img/fleche-bas.gif"/><input type="hidden" value='active'/></h1></span>
     <div class="row">
 
 <?php foreach($competences as $competence) {

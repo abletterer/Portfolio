@@ -44,7 +44,10 @@ require_once("header.php");
 							</div>
 							<div class="modal-footer rows" style="text-align:left;">
 								<div class="col-xs-6">
-								<p style="text-indent:0;">Réalisé par : <?php echo $projet["auteurProjet"]?></p></div>
+								    <ul style="list-style-type: none; font-family:TraditionellSans; font-size:20px;">Réalisé par : 
+                                        <li><?php echo $projet["auteurProjet"]?></li>
+                                    </ul>
+                                </div>
 								<div class="col-xs-6"><p><a class="btn btn-lg btn-success" href="./Projets/<?php echo $projet["urlProjet"]?>">Télécharger les sources</a></p></div>
 							</div>
 						</div><!-- /.modal-content -->

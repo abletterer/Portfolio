@@ -14,4 +14,16 @@ $(function() {
 			$(this).next().attr("value","inactive");
 		}
 	});
+    
+    $('.fleche-bas-first').click(function() {
+		$(this).parent().parent().next().children().fadeToggle();
+		if($(this).next().attr("value")=="inactive") {
+			$(this).transition({ rotate: '0deg' });
+			$(this).next().attr("value","active");
+		}
+		else {
+			$(this).transition({ rotate: '90deg' });
+			$(this).next().attr("value","inactive");
+		}
+	});
 });
