@@ -34,7 +34,6 @@ body {
     color: #777;
     font-size:30px;
     text-align: center;
-    border-bottom: 1px solid #d5d5d5;
     background-image: url("../img/darkmesh.png");
 }
 .nav-justified > .active > a,
