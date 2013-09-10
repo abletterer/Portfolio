@@ -126,6 +126,10 @@ body {
     background-image: url('../img/lghtmesh.png');
 }
 
+.title-h1-activable, .title-h1-activable-first {
+	cursor:pointer;
+}
+
 .title-h1 h1, .title-h1-activable h1, .title-h1-activable-first h1{
     font-size: 80px;
     text-align:center;
