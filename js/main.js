@@ -40,8 +40,8 @@ $(function() {
 	});
     
     $(".social>a>img").hover(function() {
-        $(this).transition({rotate: '360deg', duration: 800});
+        $(this).transition({y: -20}, 300, 'ease');
     }, function() {
-  		$(this).transition({rotate: '0deg', duration: 0});
+        $(this).transition({y: 0}, 300, 'ease');
   	});
 });
