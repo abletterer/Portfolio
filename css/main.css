@@ -33,15 +33,23 @@ body {
     background-repeat:no-repeat;
     background-position:center;
 }
-.jumbotron h1 {
+/* Main marketing message and sign up button */
+.jumbotron.erreur-404 {
+	margin: 80px 0;
+	text-align: center;
+    background-image: url('../img/affiche-sortie.png');
+    background-repeat:no-repeat;
+}
+
+.jumbotron h1, .jumbotron.erreur-404 h1 {
 	font-size: 100px;
 	line-height: 1;
 }
-.jumbotron .lead {
+.jumbotron .lead, .jumbotron.erreur-404 .lead {
 	font-size: 20px;
 	line-height: 1.25;
 }
-.jumbotron .btn {
+.jumbotron .btn, .jumbotron.erreur-404 .btn {
 	font-size: 20px;
 	padding: 14px 24px;
 }
@@ -105,13 +113,6 @@ body {
 
 .logo-title h1 {
     font-size:100px;
-    background: -moz-linear-gradient(left, #f5f5f5 0%, #e5e5e5 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f5f5f5), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, #f5f5f5 0%,#e5e5e5 100%); /* Chrome 10+,Safari 5.1+ */
-    background: -ms-linear-gradient(left, #f5f5f5 0%,#e5e5e5 100%); /* IE10+ */
-    background: -o-linear-gradient(left, #f5f5f5 0%,#e5e5e5 100%); /* Opera 11.10+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
-    background: linear-gradient(left, #f5f5f5 0%,#e5e5e5 100%); /* W3C */
 }
 
 .footer {
@@ -130,7 +131,7 @@ body {
 	cursor:pointer;
 }
 
-.title-h1 h1, .title-h1-activable h1, .title-h1-activable-first h1{
+h1.title-h1, h1.title-h1-activable, h1.title-h1-activable-first {
     font-size: 80px;
     text-align:center;
     background-image: url('../img/profil-h1.png');
@@ -138,7 +139,7 @@ body {
 	width:100%;
 }
 
-.title-h1 img, .title-h1-activable img, .title-h1-activable-first img {
+h1.title-h1 img, h1.title-h1-activable img, h1.title-h1-activable-first img {
 	width:64px;
 	height:64px;
 	float:right;

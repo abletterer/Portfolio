@@ -1,6 +1,6 @@
 <?php require_once("header.php"); ?>
 
-<span class="title-h1"><h1>A propos</h1></span>
+<h1 class="title-h1">A propos</h1>
 
 <div class="row">
     <div class="col-xs-12">

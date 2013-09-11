@@ -27,7 +27,7 @@ $lastCategorie = "";
     *
     */
 ?>
-    <span class="title-h1-activable-first"><h1>Compétences<img class="fleche-bas-first" src="img/fleche-bas.gif"/><input type="hidden" value='active'/></h1></span>
+    <h1 class="title-h1-activable-first">Compétences<img class="fleche-bas-first" src="img/fleche-bas.gif" alt="Fleche Bas"/><input type="hidden" value='active'/></h1>
     <div class="row">
 
 <?php foreach($competences as $competence) {
@@ -48,7 +48,7 @@ $lastCategorie = "";
     else $typeBar = "progress-bar-danger";
 ?>
         <div class="col-xs-6">
-            <p style="margin:0px; letter-spacing:1px; font-size:18px"><?php echo $competence['nomCompetence']; ?></p>
+            <p style="margin:0px; letter-spacing:1px; font-size:18px; text-indent:0;"><?php echo $competence['nomCompetence']; ?></p>
             <div class="progress progress-striped" onmouseover="this.className='progress progress-striped active'" onmouseout="this.className='progress progress-striped'" style="height:10px;">
                 <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $competence['noteCompetence']; ?>%; height:10px;">
                     <span class="sr-only"><?php echo $competence['noteCompetence']; ?>% Complete (success)</span>
@@ -66,10 +66,12 @@ $lastCategorie = "";
 * Partie EXPERIENCE PROFESSIONNELLE
 *
 */ ?>
-    <span class="title-h1-activable"><h1>Expérience professionnelle<img class="fleche-bas" src="img/fleche-bas.gif"/><input type="hidden" value='inactive'/></h1></span>
+    <h1  class="title-h1-activable">Expérience professionnelle<img class="fleche-bas" src="img/fleche-bas.gif" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
     <!-- TABLEAU D'EXPERIENCE-->
     <table class="table table-hover">
         <thead>
+        <tr>
+        
 <?php
     $colonnes = array_keys($experiences[0]);
     $nbcolonnes = 0;
@@ -78,7 +80,7 @@ $lastCategorie = "";
         if(!is_numeric($colonne) && $colonne!="idExperience") {
             switch($colonne) {
             case "nomExperience" : 
-                echo "<th></th>";
+                echo "<th>&nbsp;</th>";
             break;
             case "dateDebutExperience" : 
                 echo "<th>Début</th>";
@@ -96,6 +98,8 @@ $lastCategorie = "";
         }
     }        
 ?>
+
+		</tr>
         </thead>
         <tbody>
 <?php

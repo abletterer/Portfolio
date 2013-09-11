@@ -15,9 +15,10 @@ require_once("header.php");
 	$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	?>
 	
-		<span class="title-h1">
-			<h1>Projets</h1>
-		</span>
+		<h1  class="title-h1">
+			Projets
+		</h1>
+		
 		<div class="row">
 			  
 	<?php 
@@ -25,13 +26,13 @@ require_once("header.php");
 			  
 			<div class="col-xs-6" style="text-align:center;">
 				<h2><?php echo $projet["nomProjet"];?></h2>
-				<div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" width="100%" class="img-thumbnail"/></div>
+				<div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" class="img-thumbnail"/></div>
 			
 				<!-- Bouton de déclencement -->
 				<div><a data-toggle="modal" href="#myModal<?php echo $projet["idProjet"]; ?>" class="btn btn-primary btn-lg">En savoir plus &raquo;</a></div>
 				
 				<!-- Page de présentation du projet -->
-				<div class="modal fade" id="myModal<?php echo $projet["idProjet"]; ?>" role="dialog" aria-labelledby="myModalLabel<?php echo $projet["idProjet"]; ?>" aria-hidden="true" style="width:100%;">
+				<div class="modal fade" id="myModal<?php echo $projet["idProjet"]; ?>" role="dialog" aria-hidden="true" style="width:100%;">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -40,11 +41,12 @@ require_once("header.php");
 							</div>
 							<div class="modal-body">
 								<p style="text-indent:0;"><?php echo $projet["descriptionProjet"];?></p>
-								<div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" width="100%" class="img-thumbnail"/></div>
+								<div class=well><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" class="img-thumbnail"/></div>
 							</div>
 							<div class="modal-footer rows" style="text-align:left;">
 								<div class="col-xs-6">
-								    <ul style="list-style-type: none; font-family:TraditionellSans; font-size:20px;">Réalisé par : 
+									<h4>Réalisé par :</h4>
+								    <ul style="list-style-type: none; font-family:TraditionellSans; font-size:20px;">
                                         <li><?php echo $projet["auteurProjet"]?></li>
                                     </ul>
                                 </div>

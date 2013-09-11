@@ -56,7 +56,7 @@ if(!empty($_POST)) {
 
 ?>
     
-    <span class="title-h1"><h1>Contact</h1></span>
+    <h1 class="title-h1">Contact</h1>
 
 <?php 
 
