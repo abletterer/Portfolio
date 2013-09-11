@@ -8,8 +8,8 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="js/main.js"></script>
 <script type="application/javascript" src="js/jquery.transit.min.js"></script>
 

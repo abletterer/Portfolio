@@ -3,6 +3,18 @@ $(function() {
 	
 	$('.title-h1-activable').next().children().hide();
     
+    $('.title-h1-activable-first').hover(function() {
+        $(this).children("h1").children(".fleche-bas-first").attr("src","img/fleche-bas-hover.gif");
+    }, function() {
+        $(this).children("h1").children(".fleche-bas-first").attr("src","img/fleche-bas.gif");
+    });
+    
+    $('.title-h1-activable').hover(function() {
+        $(this).children("h1").children(".fleche-bas").attr("src","img/fleche-bas-hover.gif");
+    }, function() {
+        $(this).children("h1").children(".fleche-bas").attr("src","img/fleche-bas.gif");
+    });
+    
     $('.title-h1-activable-first').click(function() {
 		$(this).next().children().fadeToggle();
 		if($(this).children("h1").children("input").attr("value")=="inactive") {
@@ -30,6 +42,6 @@ $(function() {
     $(".social>a>img").hover(function() {
         $(this).transition({rotate: '360deg', duration: 800});
     }, function() {
-  		$(this).transition({rotate: '0deg', duration: 0);
+  		$(this).transition({rotate: '0deg', duration: 0});
   	});
 });
