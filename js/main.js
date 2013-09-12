@@ -42,6 +42,13 @@ $(function() {
     $(".social>a>img").hover(function() {
         $(this).transition({y: -20}, 300, 'ease');
     }, function() {
-        $(this).transition({y: 0}, 300, 'ease');
+        $(this).transition({y: 0}, 300, 'ease');    
   	});
+
+    $(".html5").hover(function() {
+        $(this).transition({ scale : '1.5'});
+    }, function() {
+        $(this).transition({ scale: '1'});
+    });
+    
 });

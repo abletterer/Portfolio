@@ -1,8 +1,8 @@
 <!-- Site footer -->
 <div class="footer">
 	<a href="http://www.w3.org/html/logo/">
-		<img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png"
-			width="165" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+		<img class='html5' src="img/html5-logo.png" onmouseover="this.src='img/html5-logo-hover.png'" onmouseout="this.src='img/html5-logo.png'"
+			width="64" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics"
 			title="HTML5 Powered with CSS3 / Styling, and Semantics">
 	</a>
     <p style="padding-top:10px; float:right;">&copy; Arnaud Bletterer 2013 - Powered by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>
