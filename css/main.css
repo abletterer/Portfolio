@@ -34,22 +34,22 @@ body {
     background-position:center;
 }
 /* Main marketing message and sign up button */
-.jumbotron.erreur-404 {
+.jumbotron.erreur {
 	margin: 80px 0;
 	text-align: center;
     background-image: url('../img/affiche-sortie.png');
     background-repeat:no-repeat;
 }
 
-.jumbotron h1, .jumbotron.erreur-404 h1 {
+.jumbotron h1, .jumbotron.erreur h1 {
 	font-size: 100px;
 	line-height: 1;
 }
-.jumbotron .lead, .jumbotron.erreur-404 .lead {
+.jumbotron .lead, .jumbotron.erreur .lead {
 	font-size: 20px;
 	line-height: 1.25;
 }
-.jumbotron .btn, .jumbotron.erreur-404 .btn {
+.jumbotron .btn, .jumbotron.erreur .btn {
 	font-size: 20px;
 	padding: 14px 24px;
 }
