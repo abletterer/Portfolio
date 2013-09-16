@@ -52,9 +52,10 @@ $(function() {
     });
 
     $(".projet").hover(function() {
-		$(this).stop().animate({opacity:1}, 500);
+		$(this).children().children("img").css("background","#499ca4");
     }, function () {
-		$(this).stop().animate({opacity:0.25}, 500);
+		$(this).children().children("img").css("background","none");
     });
+
     
 });
