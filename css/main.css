@@ -103,12 +103,11 @@ body {
 
 .logo-title span.social {
     float:right;
-    padding-top:5px;
-    width:auto;
+    padding-top:10px;
 }
 
-.logo-title span.social img {
-    padding-left:10px;
+.logo-title span.social span {
+    padding-left:15px;
 }
 
 .logo-title h1 {

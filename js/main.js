@@ -39,11 +39,10 @@ $(function() {
 		}
 	});
     
-    $(".social>a").hover(function() {
-        $(this).children("img").transition({ rotate: '20deg' });
-        $(this).children("img").transition({ rotate: '-20deg' });
+    $(".social>span>a").hover(function() {
+        $(this).children("img").transition({scale : "1.5" });
     }, function() {
-        $(this).children("img").transition({ rotate: '0deg' }); 
+        $(this).children("img").transition({ scale : "1" }); 
   	});
 
     $(".html5").hover(function() {
