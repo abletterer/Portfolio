@@ -24,7 +24,7 @@ require_once("header.php");
 	<?php 
 	foreach($projets as $projet) { ?>
 			  
-			<div class="col-xs-6" style="text-align:center;">
+			<div class="col-xs-6 projet" style="text-align:center;">
 				<h2><?php echo $projet["nomProjet"];?></h2>
 				<div class="well"><img class="img-thumbnail" src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="width:417px; height:212px;" /></div>
 			
