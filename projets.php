@@ -26,7 +26,7 @@ require_once("header.php");
 			  
 			<div class="col-xs-6 projet" style="text-align:center;">
 				<h2><?php echo $projet["nomProjet"];?></h2>
-				<div class="well"><img class="img-thumbnail" src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="width:417px; height:212px;" /></div>
+				<div class="well"><img class="img-thumbnail" src="<?php echo updateURL('img/Projets/'); echo $projet['imageProjet']; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="width:417px; height:212px;" /></div>
 			
 				<!-- Bouton de déclencement -->
 				<div><a data-toggle="modal" href="#myModal<?php echo $projet["idProjet"]; ?>" class="btn btn-primary btn-lg">En savoir plus &raquo;</a></div>
@@ -41,7 +41,7 @@ require_once("header.php");
 							</div>
 							<div class="modal-body">
 								<p style="text-indent:0;"><?php echo $projet["descriptionProjet"];?></p>
-								<div class="well"><img src="img/Projets/<?php echo $projet["imageProjet"]; ?>" alt="<?php echo $projet["nomProjet"]; ?>" class="img-thumbnail" style="width:417px; height:212px;" /></div>
+								<div class="well"><img src="<?php echo updateURL('img/Projets/'); echo $projet['imageProjet']; ?>" alt="<?php echo $projet["nomProjet"]; ?>" class="img-thumbnail" style="width:417px; height:212px;" /></div>
 							</div>
 							<div class="modal-footer rows" style="text-align:left;">
 								<div class="col-xs-6">
