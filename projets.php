@@ -40,7 +40,7 @@ require_once("header.php");
 								<h2 class="modal-title"><?php echo $projet["nomProjet"]; ?></h2>
 							</div>
 							<div class="modal-body">
-								<p style="text-indent:0;"><?php echo $projet["descriptionProjet"];?></p>
+								<div style="text-align:left;"><?php echo $projet["descriptionProjet"];?></div>
 								<div class="well"><img src="<?php echo updateURL('img/Projets/'); echo $projet['imageProjet']; ?>" alt="<?php echo $projet["nomProjet"]; ?>" class="img-thumbnail" style="width:417px; height:212px;" /></div>
 							</div>
 							<div class="modal-footer rows" style="text-align:left;">
