@@ -57,7 +57,15 @@ $(function() {
 		$(this).children(".well").children("img").css("background","none");
     });
     
+    var is_showing_v = false;
     $(".projet").click(function() {
+    	if(!is_showing_v) {
+    		$($(this).children(".hidden").attr("href")).stop().modal("show");
+    		is_showing_v = true;
+		}
+		else {
+			is_showing_v = false;
+		}
     });
 
     
