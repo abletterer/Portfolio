@@ -26,6 +26,7 @@ require_once("header.php");
 			  
 			<div class="col-xs-6 projet" style="text-align:center;">
 				<h2><?php echo $projet["nomProjet"];?></h2>
+                <a href="<?php echo updateURL('./Projets/').$projet['urlProjet']; ?>" hidden="true">Télécharger les sources</a>
 				<div class="well"><img class="img-thumbnail" src="<?php echo updateURL('img/Projets/'); echo $projet['imageProjet']; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="width:417px; height:212px;" /></div>
 			
 				<!-- Bouton de déclencement -->

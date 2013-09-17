@@ -170,6 +170,10 @@ div a {
 	text-indent:0;
 }
 
+.projet {
+    cursor:pointer;
+}
+
 .footer p {
 	text-indent:0;
 }

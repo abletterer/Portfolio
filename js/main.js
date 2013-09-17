@@ -16,7 +16,7 @@ $(function() {
     });
     
     $('.title-h1-activable-first').click(function() {
-		$(this).next().children().fadeToggle();
+		$(this).next().children().stop().fadeToggle();
 		if($(this).children("input").attr("value")=="inactive") {
 			$(this).children(".fleche-bas-first").stop().transition({ rotate: '0deg' });
 			$(this).children("input").attr("value","active");
@@ -28,7 +28,7 @@ $(function() {
 	});
 	
 	$('.title-h1-activable').click(function() {
-		$(this).next().children().fadeToggle();
+		$(this).next().children().stop().fadeToggle();
 		if($(this).children("input").attr("value")=="inactive") {
 			$(this).children(".fleche-bas").stop().transition({ rotate: '0deg' });
 			$(this).children("input").attr("value","active");
@@ -52,9 +52,12 @@ $(function() {
     });
 
     $(".projet").hover(function() {
-		$(this).children().children("img").css("background","#499ca4");
+		$(this).children(".well").children("img").css("background","#499ca4");
     }, function () {
-		$(this).children().children("img").css("background","none");
+		$(this).children(".well").children("img").css("background","none");
+    });
+    
+    $(".projet").click(function() {
     });
 
     
