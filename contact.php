@@ -5,32 +5,50 @@
 $erreurs = array();
 
 if(!empty($_POST)) {
+    //Si une demande de contact a été faite
+    $succes = true;
+    
     if(!empty($_POST["nomContact"])) {
+        //Si le nom du contact a été renseigné
         $nomContact = htmlspecialchars($_POST["nomContact"]);
     }
     else {
         $succes = false;
-        $erreurs[] = "Veuillez renseigner votre nom";
+        $erreurs[] = "Veuillez renseigner votre nom!";
     }
     
     if(!empty($_POST["emailContact"])) {
+        //Si l'email du contact a été renseigné
         $emailContact = htmlspecialchars($_POST["emailContact"]);
     }
     else {
         $succes = false;
-        $erreurs[] = "Veuillez renseigner votre email";
+        $erreurs[] = "Veuillez renseigner votre email!";
     }
     
     if(!empty($_POST["messageContact"])) {
+        //Si le message du contact a été renseigné
         $messageContact = htmlspecialchars($_POST["messageContact"]);
     }
     else {
         $succes = false;
-        $erreurs[] = "Veuillez composer votre message";
+        $erreurs[] = "Veuillez composer votre message!";
+    }
+    
+    if(!empty($_POST["captchaContact"])) {
+        //Si le captcha du contact a été renseigné
+        
+        /*
+        *   Vérification du captcha
+        */
+    }
+    else {
+        $succes = false;
+        $erreurs[]  = "Veuillez recopier le captcha que vous apercevez!";
     }
                 
-    if(!empty($nomContact) && !empty($emailContact) && !empty($messageContact)) {    
-    
+    if($succes) {    
+        //Si les étapes précédentes se sont bien déroulées
         require_once("./identifiants.php");
         
         try {
@@ -76,17 +94,22 @@ if(isset($succes)) {
 ?>
     
     <form role="form" style="letter-spacing:2px; font-size:18px;" method="POST" action="<?php echo updateURL('./contact.php'); ?>">
-    <div class="form-group">
+    <div class="row">
+    <div class="form-group col-xs-6">
         <label for="nomContact">Votre nom</label>
         <input type="text" class="form-control" id="nomContact" name="nomContact" placeholder="EX : Jean Dupont / Société Machin">
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-6">
         <label for="emailContact">Adresse courriel</label>
         <input type="email" class="form-control" id="emailContact" name="emailContact" placeholder="jeandupont@exemple.fr">
+    </div>
     </div>
     <div class="form-group">
         <label for="messageContact">Message</label>
         <textarea class="form-control" rows="3" id="messageContact" name="messageContact" placeholder="Votre message"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="captchaContact">Captcha</label>
     </div>
     <button type="submit" class="btn btn-default">Envoyer</button> 
     </form>
