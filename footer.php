@@ -1,10 +1,11 @@
 <!-- Site footer -->
 <div class="footer">
-	<a href="http://www.w3.org/html/logo/">
-		<img class='html5' src="<?php echo updateURL('img/html5-logo.png'); ?>" onmouseover="this.src='<?php echo updateURL('img/html5-logo-hover.png'); ?>'" onmouseout="this.src='<?php echo updateURL('img/html5-logo.png'); ?>'"
-			width="64" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics"
-			title="HTML5 Powered with CSS3 / Styling, and Semantics">
-	</a>
+	<img class="html5" src="<?php echo updateURL('img/html5-logo.png'); ?>" onmouseover="this.src='<?php echo updateURL('img/html5-logo-hover.png'); ?>'" onmouseout="this.src='<?php echo updateURL('img/html5-logo.png'); ?>'"
+		height="64" alt="HTML5"
+		title="HTML5">
+    <img class="html5" src="<?php echo updateURL('img/css3-logo.png'); ?>" onmouseover="this.src='<?php echo updateURL('img/css3-logo-hover.png'); ?>'" onmouseout="this.src='<?php echo updateURL('img/css3-logo.png'); ?>'"
+		height="64" alt="CSS3"
+		title="CSS3">
     <p style="padding-top:10px; float:right;">&copy; Arnaud Bletterer 2013 - Powered by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>
 	</p>
 </div>
