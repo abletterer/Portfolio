@@ -40,7 +40,10 @@ if(!empty($_POST)) {
         
         /*
         *   Vérification du captcha
+        *   Utilisationd de recaptcha (Google)
         */
+        
+        
     }
     else {
         $succes = false;

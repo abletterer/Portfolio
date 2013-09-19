@@ -15,6 +15,9 @@ $competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $pdo->query("SELECT * FROM experience ORDER BY dateDebutExperience");
 $experiences = $stmt->fetchAll(PDO::FETCH_BOTH);
 
+$stmt = $pdo->query("SELECT * FROM formation ORDER BY dateFinFormation");
+$formations = $stmt->fetchAll(PDO::FETCH_BOTH);
+
 $lastCategorie = "";
 ?>
 
@@ -70,7 +73,7 @@ $lastCategorie = "";
     <!-- TABLEAU D'EXPERIENCE-->
     <table class="table table-hover">
         <thead>
-        <tr>
+            <tr>
         
 <?php
     $colonnes = array_keys($experiences[0]);
@@ -94,23 +97,82 @@ $lastCategorie = "";
             case "emplacementExperience" : 
                 echo "<th>Emplacement</th>";
             break;
+            case "referenceExperience" :
+                echo "<th>Référence(s)</th>";
+            default:
+            break;
             }
         }
     }        
 ?>
 
-		</tr>
+		  </tr>
         </thead>
         <tbody>
 <?php
         foreach($experiences as $experience) {
             echo "<tr>";
-            for($i=1;$i<$nbcolonnes/2;$i++)
+            for($i=1;$i<$nbcolonnes/2;$i++) {
                 echo "<td>".$experience[$i]."</td>";
+            }
             echo "</tr>";
         }
 ?>
         </tbody>
+    </table>
+
+    <h1 class="title-h1 activable">Formation<img class="flech-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
+    
+    <!-- Tableau de formation-->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            
+<?php 
+
+    $colonnes = array_keys($formations[0]);
+    $nbColonnes = 0;
+    foreach($colonnes as $colonne) {
+        ++$nbColonnes;
+        if(!is_numeric($colonne) && $colonne!="idFormation") {
+            switch($colonne) {
+                case "nomFormation" :
+                    echo "<th>&nbsp;</th>";
+                break;
+                case "diplomeFormation":
+                    echo "<th>Diplôme</th>";
+                break;
+                case "dateDebutFormation" :
+                    echo "<th>Début</th>";
+                break;
+                case "dateFinFormation" :
+                    echo "<th>Fin</th>";
+                break;
+                case "etablissementFormation" :
+                    echo "<th>Etablissement</th>";
+                default:
+                break;
+            }
+        }
+    }
+
+?>
+            
+            </tr>
+        </thead>   
+        <tbody>
+<?php 
+
+        foreach($formations as $formation) {
+            echo "<tr>";
+            for($i=1;$i<$nbColonnes/2;++$i) {
+                echo "<td>".$formation[$i]."</td>";
+            }
+            echo "</tr>";
+        }
+
+?>
+        </tbody> 
     </table>
     
     
