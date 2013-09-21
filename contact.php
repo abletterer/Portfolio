@@ -49,7 +49,7 @@ if(!empty($_POST)) {
             echo 'Erreur : '.$e->getMessage().'<br />';
             echo 'N° : '.$e->getCode();
             $succes = false;
-            $erreur[] = "Une erreur a été rencontrée avec la base de donnée!";
+            $erreur[] = "Une erreur a été rencontrée avec la base de données!";
         }
     }
 }
@@ -75,7 +75,7 @@ if(isset($succes)) {
 
 ?>
     
-    <form role="form" style="letter-spacing:2px; font-size:18px;" method="POST" action="./contact.php">
+    <form role="form" style="letter-spacing:2px; font-size:18px;" method="POST" action="<?php echo updateURL('./contact.php'); ?>">
     <div class="form-group">
         <label for="nomContact">Votre nom</label>
         <input type="text" class="form-control" id="nomContact" name="nomContact" placeholder="EX : Jean Dupont / Société Machin">
@@ -91,7 +91,7 @@ if(isset($succes)) {
     <button type="submit" class="btn btn-default">Envoyer</button> 
     </form>
     
-    <address style="letter-spacing:1spx; font-size:18px; font">
+    <address style="letter-spacing:1spx; font-size:18px; text-align:center;">
       <strong>Arnaud Bletterer</strong><br>
       2 Route de Forstheim<br>
       67500 HAGUENAU, FRANCE<br>

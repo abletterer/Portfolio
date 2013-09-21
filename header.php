@@ -1,4 +1,6 @@
-<?php $nom_page = substr(strrchr($_SERVER["PHP_SELF"],'/'),1); ?>
+<?php $nom_page = substr(strrchr($_SERVER["PHP_SELF"],'/'),1); 
+	  require_once("utils.php");
+?>
 
 <!DOCTYPE html>
 
@@ -6,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="">
     <meta name="author" content="Arnaud Bletterer">
-    <link rel="shortcut icon" href="img/abletterer-logo-mini.png">
+    <link rel="shortcut icon" href="<?php echo updateURL('img/abletterer-logo-mini.png'); ?>">
 <?php 
     switch($nom_page) {
     case "index.php" : echo "<title>Accueil - ABletterer</title>";
@@ -25,11 +27,11 @@
 ?>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo updateURL('bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/justified-nav.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="<?php echo updateURL('css/justified-nav.css'); ?>" rel="stylesheet">
+    <link href="<?php echo updateURL('css/main.css'); ?>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,23 +45,23 @@
 <div class="container">
     <div class="masthead">
         <span class="logo-title">
-            <a href="index.php"><img src="img/abletterer-logo.png" alt="Logo ABletterer" onmouseover="this.src='img/abletterer-logo-hover.png'" onmouseout="this.src='img/abletterer-logo.png';"></a>
+            <a href="index.php"><img src="<?php echo updateURL('img/abletterer-logo.png'); ?>" alt="Logo ABletterer" onmouseover="this.src='<?php echo updateURL('img/abletterer-logo-hover.png'); ?>'" onmouseout="this.src='<?php echo updateURL('img/abletterer-logo.png'); ?>';"></a>
             <span class="social">
-                <a href="https://www.facebook.com/abletterer" target="_blank"><img src="img/facebook-logo.gif" alt="Logo Facebook" onmouseover="this.src='img/facebook-logo-hover.gif'" onmouseout="this.src='img/facebook-logo.gif';"></a>
-                <a href="https://www.twitter.com/abletterer" target="_blank"><img src="img/twitter-logo.gif" alt="Logo Twitter" onmouseover="this.src='img/twitter-logo-hover.gif'" onmouseout="this.src='img/twitter-logo.gif';"></a>
-                <a href="https://plus.google.com/115104367788742954625/about" target="_blank"><img src="img/googleplus-logo.gif" alt="Logo Google Plus" onmouseover="this.src='img/googleplus-logo-hover.gif'" onmouseout="this.src='img/googleplus-logo.gif';"></a>
+                <span width="64px"><a href="https://www.facebook.com/abletterer" target="_blank"><img src="<?php echo updateURL('img/facebook-logo.gif'); ?>" alt="Logo Facebook" onmouseover="this.src='<?php echo updateURL('img/facebook-logo-hover.gif'); ?>'" onmouseout="this.src='<?php echo updateURL('img/facebook-logo.gif'); ?>';" height="48px"></a></span>
+                <span><a href="https://www.twitter.com/abletterer" target="_blank"><img src="<?php echo updateURL('img/twitter-logo.gif'); ?>" alt="Logo Twitter" onmouseover="this.src='<?php echo updateURL('img/twitter-logo-hover.gif'); ?>'" onmouseout="this.src='<?php echo updateURL('img/twitter-logo.gif'); ?>'" height="48px"></a></span>
+                <span><a href="https://plus.google.com/115104367788742954625/about" target="_blank"><img src="<?php echo updateURL('img/googleplus-logo.gif'); ?>" alt="Logo Google Plus" onmouseover="this.src='<?php echo updateURL('img/googleplus-logo-hover.gif'); ?>'" onmouseout="this.src='<?php echo updateURL('img/googleplus-logo.gif'); ?>'" height="48px"></a></span>
             </span>
         </span>
         <ul class="nav nav-justified" style="max-width: 970px;">
             <li <?php echo $nom_page=="index.php"?" class='active'":""; ?>
-            ><a href="./index.php">Accueil</a></li>
+            ><a href=<?php echo updateURL('./index.php'); ?>>Accueil</a></li>
             <li <?php echo $nom_page=="projets.php"?" class='active'":""; ?>
-            ><a href="./projets.php">Projets</a></li>
+            ><a href=<?php echo updateURL('./projets.php'); ?>>Projets</a></li>
             <li <?php echo $nom_page=="cv.php"?" class='active'":""; ?>
-            ><a href="./cv.php">CV</a></li>
+            ><a href=<?php echo updateURL('./cv.php'); ?>>CV</a></li>
             <li <?php echo $nom_page=="about.php"?" class='active'":""; ?>
-            ><a href="./about.php">A propos</a></li>
+            ><a href=<?php echo updateURL('./about.php'); ?>>A propos</a></li>
             <li <?php echo $nom_page=="contact.php"?" class='active'":""; ?>
-            ><a href="./contact.php">Contact</a></li>
+            ><a href=<?php echo updateURL('./contact.php'); ?>>Contact</a></li>
         </ul>
     </div><!-- /.masthead -->

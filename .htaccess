@@ -5,3 +5,4 @@ ErrorDocument 500 /erreur-500.php
 ErrorDocument 300 /erreur-404.php
 
 Options -MultiViews
+Options -Indexes

@@ -16,40 +16,57 @@ $(function() {
     });
     
     $('.title-h1-activable-first').click(function() {
-		$(this).next().children().fadeToggle();
+		$(this).next().children().stop().fadeToggle();
 		if($(this).children("input").attr("value")=="inactive") {
-			$(this).children(".fleche-bas-first").transition({ rotate: '0deg' });
+			$(this).children(".fleche-bas-first").stop().transition({ rotate: '0deg' });
 			$(this).children("input").attr("value","active");
 		} 
 		else {
-			$(this).children(".fleche-bas-first").transition({ rotate: '90deg' });
+			$(this).children(".fleche-bas-first").stop().transition({ rotate: '90deg' });
 			$(this).children("input").attr("value","inactive");
 		}
 	});
 	
 	$('.title-h1-activable').click(function() {
-		$(this).next().children().fadeToggle();
+		$(this).next().children().stop().fadeToggle();
 		if($(this).children("input").attr("value")=="inactive") {
-			$(this).children(".fleche-bas").transition({ rotate: '0deg' });
+			$(this).children(".fleche-bas").stop().transition({ rotate: '0deg' });
 			$(this).children("input").attr("value","active");
 		} 
 		else {
-			$(this).children(".fleche-bas").transition({ rotate: '90deg' });
+			$(this).children(".fleche-bas").stop().transition({ rotate: '90deg' });
 			$(this).children("input").attr("value","inactive");
 		}
 	});
     
-    $(".social>a").hover(function() {
-        $(this).children("img").transition({ rotate: '20deg' });
-        $(this).children("img").transition({ rotate: '-20deg' });
+    $(".social>span>a").hover(function() {
+        $(this).children("img").stop().transition({scale : "1.5" });
     }, function() {
-        $(this).children("img").transition({ rotate: '0deg' }); 
+        $(this).children("img").stop().transition({ scale : "1" }); 
   	});
 
     $(".html5").hover(function() {
-        $(this).transition({ scale : '1.5'});
+        $(this).stop().transition({ scale : '1.5'});
     }, function() {
-        $(this).transition({ scale: '1'});
+        $(this).stop().transition({ scale: '1'});
     });
+
+    $(".projet").hover(function() {
+		$(this).children(".well").children("img").css("background","#499ca4");
+    }, function () {
+		$(this).children(".well").children("img").css("background","none");
+    });
+    
+    var is_showing_v = false;
+    $(".projet").click(function() {
+    	if(!is_showing_v) {
+    		$($(this).children(".hidden").attr("href")).stop().modal("show");
+    		is_showing_v = true;
+		}
+		else {
+			is_showing_v = false;
+		}
+    });
+
     
 });

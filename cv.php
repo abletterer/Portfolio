@@ -27,7 +27,7 @@ $lastCategorie = "";
     *
     */
 ?>
-    <h1 class="title-h1-activable-first">Compétences<img class="fleche-bas-first" src="img/fleche-bas.gif" alt="Fleche Bas"/><input type="hidden" value='active'/></h1>
+    <h1 class="title-h1-activable-first">Compétences<img class="fleche-bas-first" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='active'/></h1>
     <div class="row">
 
 <?php foreach($competences as $competence) {
@@ -66,7 +66,7 @@ $lastCategorie = "";
 * Partie EXPERIENCE PROFESSIONNELLE
 *
 */ ?>
-    <h1  class="title-h1-activable">Expérience professionnelle<img class="fleche-bas" src="img/fleche-bas.gif" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
+    <h1  class="title-h1-activable">Expérience professionnelle<img class="fleche-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
     <!-- TABLEAU D'EXPERIENCE-->
     <table class="table table-hover">
         <thead>
