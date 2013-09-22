@@ -15,7 +15,7 @@ $competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $pdo->query("SELECT * FROM experience ORDER BY dateDebutExperience");
 $experiences = $stmt->fetchAll(PDO::FETCH_BOTH);
 
-$stmt = $pdo->query("SELECT * FROM formation ORDER BY dateFinFormation");
+$stmt = $pdo->query("SELECT idFormation, nomFormation, dateReussiteFormation, etablissementFormation FROM formation ORDER BY dateReussiteFormation");
 $formations = $stmt->fetchAll(PDO::FETCH_BOTH);
 
 $lastCategorie = "";
@@ -121,7 +121,7 @@ $lastCategorie = "";
         </tbody>
     </table>
 
-    <h1 class="title-h1 activable">Formation<img class="flech-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
+    <h1 class="title-h1-activable">Formation<img class="fleche-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
     
     <!-- Tableau de formation-->
     <table class="table table-hover">
@@ -139,15 +139,9 @@ $lastCategorie = "";
                 case "nomFormation" :
                     echo "<th>&nbsp;</th>";
                 break;
-                case "diplomeFormation":
-                    echo "<th>Diplôme</th>";
-                break;
-                case "dateDebutFormation" :
-                    echo "<th>Début</th>";
-                break;
-                case "dateFinFormation" :
-                    echo "<th>Fin</th>";
-                break;
+                case "dateReussiteFormation" :
+                    echo "<th>Année</th>";
+				break;
                 case "etablissementFormation" :
                     echo "<th>Etablissement</th>";
                 default:
@@ -166,8 +160,13 @@ $lastCategorie = "";
         foreach($formations as $formation) {
             echo "<tr>";
             for($i=1;$i<$nbColonnes/2;++$i) {
-                echo "<td>".$formation[$i]."</td>";
-            }
+				if($colonnes[$i*2]=="dateReussiteFormation") {
+                	echo "<td>".date("Y",strtotime($formation[$i]))."</td>";
+				}
+				else {
+                	echo "<td>".$formation[$i]."</td>";
+				}
+			}
             echo "</tr>";
         }
 
