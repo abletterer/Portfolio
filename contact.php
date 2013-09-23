@@ -34,7 +34,7 @@ if(!empty($_POST)) {
         $succes = false;
         $erreurs[] = "Veuillez composer votre message!";
     }
-    
+                
     if(!empty($_POST["captchaContact"])) {
         //Si le captcha du contact a été renseigné
         
@@ -49,7 +49,7 @@ if(!empty($_POST)) {
         $succes = false;
         $erreurs[]  = "Veuillez recopier le captcha que vous apercevez!";
     }
-                
+
     if($succes) {    
         //Si les étapes précédentes se sont bien déroulées
         require_once("./identifiants.php");
@@ -98,21 +98,33 @@ if(isset($succes)) {
     
     <form role="form" style="letter-spacing:2px; font-size:18px;" method="POST" action="<?php echo updateURL('./contact.php'); ?>">
     <div class="row">
-    <div class="form-group col-xs-6">
-        <label for="nomContact">Votre nom</label>
-        <input type="text" class="form-control" id="nomContact" name="nomContact" placeholder="EX : Jean Dupont / Société Machin">
-    </div>
-    <div class="form-group col-xs-6">
-        <label for="emailContact">Adresse courriel</label>
-        <input type="email" class="form-control" id="emailContact" name="emailContact" placeholder="jeandupont@exemple.fr">
-    </div>
-    </div>
-    <div class="form-group">
-        <label for="messageContact">Message</label>
-        <textarea class="form-control" rows="3" id="messageContact" name="messageContact" placeholder="Votre message"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="captchaContact">Captcha</label>
+        <div class="form-group col-xs-6">
+            <h2 style="text-align:center;">Votre nom</h2>
+            <input type="text" class="form-control" id="nomContact" name="nomContact" placeholder="EX : Jean Dupont / Société Machin">
+        </div>
+        <div class="form-group col-xs-6">
+            <h2 style="text-align:center;">Adresse courriel</h2>
+            <input type="email" class="form-control" id="emailContact" name="emailContact" placeholder="jeandupont@exemple.fr">
+        </div>
+        <div class="form-group col-xs-6">
+            <h2 style="text-align:center;">Message</h2>
+            <textarea class="form-control" rows="3" id="messageContact" name="messageContact" placeholder="Votre message"></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <h2 style="text-align:center;">Verification d'humanite</h2>
+            <!--<script type="text/javascript"
+               src="https://www.google.com/recaptcha/api/challenge?k=6LcebecSAAAAAFFGJGTxgcqGejHgHdsCOwouf9zz">
+            </script>
+               
+            <noscript>
+                <iframe src="https://www.google.com/recaptcha/api/noscript?k=6LcebecSAAAAAFFGJGTxgcqGejHgHdsCOwouf9zz"
+                    height="300" width="500" frameborder="0"></iframe><br>
+                <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+                </textarea>
+                <input type="hidden" name="recaptcha_response_field"
+                    value="manual_challenge">
+            </noscript>-->
+        </div>
     </div>
     <button type="submit" class="btn btn-default">Envoyer</button> 
     </form>
