@@ -1,4 +1,7 @@
-<?php require_once("header.php"); ?>
+<?php 
+    require_once("header.php"); 
+    $public_key = "6LcebecSAAAAAFFGJGTxgcqGejHgHdsCOwouf9zz";
+?>
 
 <?php 
 
@@ -14,7 +17,7 @@ if(!empty($_POST)) {
     }
     else {
         $succes = false;
-        $erreurs[] = "Veuillez renseigner votre nom!";
+        $erreurs["nomContact"] = "Veuillez renseigner votre nom!";
     }
     
     if(!empty($_POST["emailContact"])) {
@@ -23,7 +26,7 @@ if(!empty($_POST)) {
     }
     else {
         $succes = false;
-        $erreurs[] = "Veuillez renseigner votre email!";
+        $erreurs["emailContact"] = "Veuillez renseigner votre email!";
     }
     
     if(!empty($_POST["messageContact"])) {
@@ -32,7 +35,7 @@ if(!empty($_POST)) {
     }
     else {
         $succes = false;
-        $erreurs[] = "Veuillez composer votre message!";
+        $erreurs["messageContact"] = "Veuillez composer votre message!";
     }
                 
     if(!empty($_POST["captchaContact"])) {
@@ -42,12 +45,20 @@ if(!empty($_POST)) {
         *   Vérification du captcha
         *   Utilisationd de recaptcha (Google)
         */
-        
+        if($_POST["captchaContact"] == $_SESSION["captcha"]) {
+            //Le catcha correspond à celui affiché la page précédente
+            destroy($_SESSION["captcha"]);
+            $_SESSION["captcha"] = "";
+        }
+        else {
+            $succes = false;
+            $erreurs["captchaContact"]  = "Vous n'avez pas correctement recopié le captcha!";
+        }
         
     }
     else {
         $succes = false;
-        $erreurs[]  = "Veuillez recopier le captcha que vous apercevez!";
+        $erreurs["captchaContact"]  = "Veuillez recopier le captcha, ou n'êtes vous pas humain?";
     }
 
     if($succes) {    
@@ -83,11 +94,15 @@ if(!empty($_POST)) {
 
 if(isset($succes)) {
     if(!$succes) {
-        echo "<div class='alert alert-warning'>";
-        foreach($erreurs as $erreur) {
-            echo "<p style ='text-indent:0;'>".$erreur."</p>";
-        }
-        echo "</div>";
+        
+?>
+
+    <div class='alert alert-warning'>
+    <p style ='text-indent:0;'>Veuillez remplir les champs indiqués</p>
+    </div>
+
+<?php    
+    
     }
     else {
         echo "<div class='alert alert-success'>Le message a bien été envoyé. Merci!</div>";
@@ -100,30 +115,28 @@ if(isset($succes)) {
     <div class="row">
         <div class="form-group col-xs-6">
             <h2 style="text-align:center;">Votre nom</h2>
-            <input type="text" class="form-control" id="nomContact" name="nomContact" placeholder="EX : Jean Dupont / Société Machin">
+            <input type="text" class="form-control" id="nomContact" name="nomContact" placeholder="Ex : Jean Dupont / Société Machin"
+                   <?php echo (isset($succes) && !$succes && isset($erreurs["nomContact"]))?"style='border:1px solid red'":""; ?> >
         </div>
         <div class="form-group col-xs-6">
             <h2 style="text-align:center;">Adresse courriel</h2>
-            <input type="email" class="form-control" id="emailContact" name="emailContact" placeholder="jeandupont@exemple.fr">
+            <input type="email" class="form-control" id="emailContact" name="emailContact" placeholder="Ex : jeandupont@exemple.fr"
+                   <?php echo (isset($succes) && !$succes && isset($erreurs["emailContact"]))?"style='border:1px solid red'":""; ?> >
         </div>
         <div class="form-group col-xs-6">
             <h2 style="text-align:center;">Message</h2>
-            <textarea class="form-control" rows="3" id="messageContact" name="messageContact" placeholder="Votre message"></textarea>
+            <textarea class="form-control" rows="3" id="messageContact" name="messageContact" placeholder="Ex : Votre message"
+                   <?php echo (isset($succes) && !$succes && isset($erreurs["messageContact"]))?"style='border:1px solid red'":""; ?> >
+            </textarea>
         </div>
         <div class="form-group col-xs-6">
-            <h2 style="text-align:center;">Verification d'humanite</h2>
-            <!--<script type="text/javascript"
-               src="https://www.google.com/recaptcha/api/challenge?k=6LcebecSAAAAAFFGJGTxgcqGejHgHdsCOwouf9zz">
-            </script>
-               
-            <noscript>
-                <iframe src="https://www.google.com/recaptcha/api/noscript?k=6LcebecSAAAAAFFGJGTxgcqGejHgHdsCOwouf9zz"
-                    height="300" width="500" frameborder="0"></iframe><br>
-                <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-                </textarea>
-                <input type="hidden" name="recaptcha_response_field"
-                    value="manual_challenge">
-            </noscript>-->
+            <h2 style="text-align:center;">Vérification d'humanité</h2>
+            <div>
+                <img id="image_captcha" src="<?php echo 'quickcaptcha/imagebuilder.php?rand='.rand(0,999999);?>" 
+                     style="display:inline-block; height:33px;" data-content="Le respect de la casse n'est pas obligatoire"
+                     data-placement="bottom">
+                <input type="text" class="form-control" id="captchaContact" name="captchaContact" style="display:inline-block; width:65%;">
+            </div>
         </div>
     </div>
     <button type="submit" class="btn btn-default">Envoyer</button> 

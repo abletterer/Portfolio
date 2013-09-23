@@ -1,4 +1,6 @@
-<?php $nom_page = substr(strrchr($_SERVER["PHP_SELF"],'/'),1); 
+<?php 
+    session_start();
+    $nom_page = substr(strrchr($_SERVER["PHP_SELF"],'/'),1); 
 	  require_once("utils.php");
 ?>
 

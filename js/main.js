@@ -62,11 +62,22 @@ $(function() {
     	if(!is_showing_v) {
     		$($(this).children(".hidden").attr("href")).stop().modal("show");
     		is_showing_v = true;
-		}
+		} 
 		else {
 			is_showing_v = false;
 		}
     });
-
+    
+    $("#image_captcha").hover(function() {
+        $(this).popover("show");
+    }, function () {
+        $(this).popover("hide");
+    });
+    
+    $("#image_captcha").next().hover(function() {
+        $("#image_captcha").popover("show");
+    }, function () {
+        $("#image_captcha").popover("hide");
+    });
     
 });
