@@ -1,6 +1,5 @@
 <?php 
-    require_once("header.php"); 
-    $public_key = "6LcebecSAAAAAFFGJGTxgcqGejHgHdsCOwouf9zz";
+    include_once("header.php"); 
 ?>
 
 <?php 
@@ -40,25 +39,19 @@ if(!empty($_POST)) {
                 
     if(!empty($_POST["captchaContact"])) {
         //Si le captcha du contact a été renseigné
-        
-        /*
-        *   Vérification du captcha
-        *   Utilisationd de recaptcha (Google)
-        */
-        if($_POST["captchaContact"] == $_SESSION["captcha"]) {
+        if(strtoupper($_POST["captchaContact"]) == strtoupper($_SESSION["captchaContact"])) {
             //Le catcha correspond à celui affiché la page précédente
-            destroy($_SESSION["captcha"]);
-            $_SESSION["captcha"] = "";
+            $_SESSION["captchaContact"] = "";
+            session_destroy();
         }
         else {
             $succes = false;
             $erreurs["captchaContact"]  = "Vous n'avez pas correctement recopié le captcha!";
         }
-        
     }
     else {
         $succes = false;
-        $erreurs["captchaContact"]  = "Veuillez recopier le captcha, ou n'êtes vous pas humain?";
+        $erreurs["captchaContact"]  = "Veuillez recopier le captcha, ou ... n'êtes vous pas humain?";
     }
 
     if($succes) {    
@@ -93,16 +86,25 @@ if(!empty($_POST)) {
 <?php 
 
 if(isset($succes)) {
-    if(!$succes) {
+    if(!$succes && !isset($erreurs["captchaContact"])) {
         
 ?>
 
     <div class='alert alert-warning'>
-    <p style ='text-indent:0;'>Veuillez remplir les champs indiqués</p>
+        <p style ='text-indent:0;'>Veuillez remplir les champs indiqués</p>
     </div>
 
 <?php    
     
+    }
+    else if(isset($erreurs["captchaContact"])) {
+?>
+
+    <div class='alert alert-warning'>
+        <p style ='text-indent:0;'><?php echo $erreurs["captchaContact"]; ?></p>
+    </div>
+
+<?php 
     }
     else {
         echo "<div class='alert alert-success'>Le message a bien été envoyé. Merci!</div>";
@@ -132,10 +134,12 @@ if(isset($succes)) {
         <div class="form-group col-xs-6">
             <h2 style="text-align:center;">Vérification d'humanité</h2>
             <div>
+                <label for="image_captcha" style="letter-spacing:0px; font-weight:normal">Recopiez ce captcha : </label>
                 <img id="image_captcha" src="<?php echo 'quickcaptcha/imagebuilder.php?rand='.rand(0,999999);?>" 
                      style="display:inline-block; height:33px;" data-content="Le respect de la casse n'est pas obligatoire"
-                     data-placement="bottom">
-                <input type="text" class="form-control" id="captchaContact" name="captchaContact" style="display:inline-block; width:65%;">
+                     data-placement="right">
+                <input type="text" class="form-control" id="captchaContact" name="captchaContact"
+                   style='<?php echo (isset($succes) && !$succes && isset($erreurs["captchaContact"]))?"border:1px solid red;":""; ?> margin-top:4px;' >
             </div>
         </div>
     </div>
@@ -148,5 +152,5 @@ if(isset($succes)) {
       67500 HAGUENAU, FRANCE<br>
       <a href="mailto:arnaud.bletterer@gmail.com">arnaud.bletterer&nbsp;_at_&nbsp;gmail.com</a>
     </address>
-    
+
 <?php require_once("footer.php"); ?>

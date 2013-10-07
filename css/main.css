@@ -96,18 +96,23 @@ body {
 }
 
 .logo-title img:hover{
-    text-align:center;
+    text-align:center;  
     width:auto;
     cursor:pointer;
 }
 
 .logo-title span.social {
     float:right;
+    margin-right:12px;
     padding-top:10px;
 }
 
 .logo-title span.social span {
     padding-left:15px;
+}
+
+.logo-title span.social span a{
+    text-decoration:none;
 }
 
 .logo-title h1 {
@@ -116,6 +121,7 @@ body {
 
 .footer {
     border-top-color: #ddd;
+    text-decoration:none;
 }
 
 .footer,.btn {
@@ -174,8 +180,16 @@ div a {
     cursor:pointer;
 }
 
+.footer {
+    text-decoration:none;
+}
+
 .footer p {
 	text-indent:0;
+}
+
+.footer a img{
+	margin-left: 15px;
 }
 
 th {
@@ -198,10 +212,6 @@ th {
 
 .modal-footer{
 	border-top: 1px solid #d5d5d5;
-}
-
-.html5 {
-	margin-left: 15px;
 }
 
 .popover {

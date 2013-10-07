@@ -1,5 +1,13 @@
 $(function() {
 	$('.fleche-bas').transition({ rotate: '90deg', duration: 0});
+    
+    $(".logo-title>a").hover(function() {
+        $(this).children("img.normal").stop().animate({"opacity": "0"}, 400);
+        $(this).children("img.hover").stop().animate({"opacity": "1"}, 400);
+    }, function() {
+        $(this).children("img.hover").stop().animate({"opacity": "0"}, 400);
+        $(this).children("img.normal").stop().animate({"opacity": "1"}, 400);
+    });
 	
 	$('.title-h1-activable').next().children().hide();
     
@@ -41,14 +49,22 @@ $(function() {
     
     $(".social>span>a").hover(function() {
         $(this).children("img").stop().transition({scale : "1.5" });
+        $(this).children("img.normal").stop().animate({"opacity": "0"}, 400);
+        $(this).children("img.hover").stop().animate({"opacity": "1"}, 400);
     }, function() {
-        $(this).children("img").stop().transition({ scale : "1" }); 
+        $(this).children("img").stop().transition({scale : "1" });
+        $(this).children("img.hover").stop().animate({"opacity": "0"}, 400);
+        $(this).children("img.normal").stop().animate({"opacity": "1"}, 400);
   	});
 
-    $(".html5").hover(function() {
-        $(this).stop().transition({ scale : '1.5'});
+    $(".footer>a").hover(function() {
+        $(this).children("img").stop().transition({ scale : '1.5'});
+        $(this).children("img.normal").stop().animate({"opacity": "0"}, 400);
+        $(this).children("img.hover").stop().animate({"opacity": "1"}, 400);
     }, function() {
-        $(this).stop().transition({ scale: '1'});
+        $(this).children("img").stop().transition({ scale : '1'});
+        $(this).children("img.hover").stop().animate({"opacity": "0"}, 400);
+        $(this).children("img.normal").stop().animate({"opacity": "1"}, 400);
     });
 
     $(".projet").hover(function() {
@@ -69,15 +85,15 @@ $(function() {
     });
     
     $("#image_captcha").hover(function() {
-        $(this).popover("show");
+        $(this).stop().popover("show");
     }, function () {
-        $(this).popover("hide");
+        $(this).stop().popover("hide");
     });
     
     $("#image_captcha").next().hover(function() {
-        $("#image_captcha").popover("show");
+        $("#image_captcha").stop().popover("show");
     }, function () {
-        $("#image_captcha").popover("hide");
+        $("#image_captcha").stop().popover("hide");
     });
     
 });

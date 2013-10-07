@@ -1,7 +1,7 @@
 <?php 
     session_start();
     $nom_page = substr(strrchr($_SERVER["PHP_SELF"],'/'),1); 
-	  require_once("utils.php");
+    require_once("utils.php");
 ?>
 
 <!DOCTYPE html>
@@ -47,11 +47,29 @@
 <div class="container">
     <div class="masthead">
         <span class="logo-title">
-            <a href="index.php"><img src="<?php echo updateURL('img/abletterer-logo.png'); ?>" alt="Logo ABletterer" onmouseover="this.src='<?php echo updateURL('img/abletterer-logo-hover.png'); ?>'" onmouseout="this.src='<?php echo updateURL('img/abletterer-logo.png'); ?>';"></a>
+            <a href="index.php">
+                <img class="hover" src="<?php echo updateURL('img/abletterer-logo-hover.png'); ?>" alt="Logo ABletterer" style="position: absolute; opacity: 0;">
+                <img class="normal" src="<?php echo updateURL('img/abletterer-logo.png'); ?>" alt="Logo ABletterer">
+            </a>
             <span class="social">
-                <span width="64px"><a href="https://www.facebook.com/abletterer" target="_blank"><img src="<?php echo updateURL('img/facebook-logo.gif'); ?>" alt="Logo Facebook" onmouseover="this.src='<?php echo updateURL('img/facebook-logo-hover.gif'); ?>'" onmouseout="this.src='<?php echo updateURL('img/facebook-logo.gif'); ?>';" height="48px"></a></span>
-                <span><a href="https://www.twitter.com/abletterer" target="_blank"><img src="<?php echo updateURL('img/twitter-logo.gif'); ?>" alt="Logo Twitter" onmouseover="this.src='<?php echo updateURL('img/twitter-logo-hover.gif'); ?>'" onmouseout="this.src='<?php echo updateURL('img/twitter-logo.gif'); ?>'" height="48px"></a></span>
-                <span><a href="https://plus.google.com/115104367788742954625/about" target="_blank"><img src="<?php echo updateURL('img/googleplus-logo.gif'); ?>" alt="Logo Google Plus" onmouseover="this.src='<?php echo updateURL('img/googleplus-logo-hover.gif'); ?>'" onmouseout="this.src='<?php echo updateURL('img/googleplus-logo.gif'); ?>'" height="48px"></a></span>
+                <span>
+                    <a href="https://www.facebook.com/abletterer" target="_blank">
+                        <img class="hover" src="<?php echo updateURL('img/facebook-logo-hover.png'); ?>" alt="Logo Facebook" style="position:absolute; height:48px; opacity:0;">
+                        <img class="normal" src="<?php echo updateURL('img/facebook-logo.png'); ?>" alt="Logo Facebook" style="height:48px;">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.twitter.com/abletterer" target="_blank">
+                        <img class="hover" src="<?php echo updateURL('img/twitter-logo-hover.png'); ?>" alt="Logo Facebook" style="position:absolute; height:48px; opacity:0;">
+                        <img class="normal" src="<?php echo updateURL('img/twitter-logo.png'); ?>" alt="Logo Twitter"style="height:48px;">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://plus.google.com/115104367788742954625/about" target="_blank">
+                        <img class="hover" src="<?php echo updateURL('img/googleplus-logo-hover.png'); ?>" alt="Logo Facebook" style="position:absolute; height:48px; opacity:0;">
+                        <img class="normal" src="<?php echo updateURL('img/googleplus-logo.png'); ?>" alt="Logo Google Plus" style="height:48px;">
+                    </a>
+                </span>
             </span>
         </span>
         <ul class="nav nav-justified" style="max-width: 970px;">

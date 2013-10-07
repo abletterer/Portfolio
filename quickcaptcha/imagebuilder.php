@@ -77,11 +77,13 @@ for ($i = 0; $i < $stringlength; $i++) {
 	imagedestroy ($buffer2); 
 }
 
-$_SESSION['captcha'] = $password;
-
 header('Content-type: image/png');
 imagepng($image);
 imagedestroy($image);
-  
+
+session_start();
+
+$_SESSION['captchaContact'] = $password;
+
 ?> 
 

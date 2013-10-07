@@ -27,10 +27,6 @@ $acceptedChars = 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789';
 // Number of characters in image.
 $stringlength = 5;
 
-// Where to go when the correct / incorrect code is entered.
-$success = "success.html";
-$failure = "failure.html";
-
 // A value between 0 and 100 describing how much color overlap
 // there is between text and other objects.  Lower is more
 // secure against bots, but also harder to read.
