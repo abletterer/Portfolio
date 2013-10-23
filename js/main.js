@@ -67,31 +67,32 @@ $(function() {
         $(this).children("img.normal").stop().animate({"opacity": "1"}, 400);
     });
 
-    $(".projet").hover(function() {
-		$(this).children(".well").children("img").css("background","#499ca4");
+    var is_showing_v = false;
+    $(".projet>.well").hover(function() {
+		$(this).children("img").css("background","#499ca4");
     }, function () {
-		$(this).children(".well").children("img").css("background","none");
+		$(this).children("img").css("background","none");
     });
     
-    var is_showing_v = false;
-    $(".projet").click(function() {
+    $(".projet>.well,h2").click(function() {
     	if(!is_showing_v) {
-    		$($(this).children(".hidden").attr("href")).stop().modal("show");
+    		$($(this).parent().children(".hidden").attr("href")).stop().modal("show");
     		is_showing_v = true;
-		} 
-		else {
-			is_showing_v = false;
 		}
     });
-    
+
+    $(".projet").hover(function() {}, function() {is_showing_v = false});
+
     $("#image_captcha").hover(function() {
         $(this).stop().popover("show");
+        setTimeout(function() {$("#image_captcha").stop().popover("hide")},1000);
     }, function () {
         $(this).stop().popover("hide");
     });
     
     $("#image_captcha").next().hover(function() {
         $("#image_captcha").stop().popover("show");
+        setTimeout(function() {$("#image_captcha").stop().popover("hide")},1000);
     }, function () {
         $("#image_captcha").stop().popover("hide");
     });

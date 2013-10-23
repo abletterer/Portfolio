@@ -30,7 +30,7 @@ require_once("header.php");
 				<div class="well"><img class="img-thumbnail" src="<?php echo updateURL('img/Projets/'); echo $projet['imageProjet']; ?>" alt="<?php echo $projet["nomProjet"]; ?>" style="width:417px; height:212px;" /></div>
 			
 				<!-- Bouton de déclencement -->
-				<div><a data-toggle="modal" href="#myModal<?php echo $projet['idProjet']; ?>" class="btn btn-primary btn-lg">En savoir plus &raquo;</a></div>
+				<div><a data-toggle="modal" href="#myModal<?php echo $projet['idProjet']; ?>" class="btn btn-primary btn-lg" id="aModal<?php echo $projet['idProjet']; ?>">En savoir plus &raquo;</a></div>
 				
 				<!-- Page de présentation du projet -->
 				<div class="modal fade" id="myModal<?php echo $projet['idProjet']; ?>" role="dialog" aria-hidden="true" style="width:100%;">
@@ -51,16 +51,14 @@ require_once("header.php");
                                         <?php echo $projet["auteurProjet"]?>
                                     </ul>
                                 </div>
-								<div class="col-xs-6"><p><a class="btn btn-lg btn-success" href="./Projets/<?php echo $projet["urlProjet"]?>">Télécharger les sources</a></p></div>
+								<div class="col-xs-6"><p><a class="btn btn-lg btn-success" href=<?php echo updateURL("./Projets/").$projet["urlProjet"]?>>Télécharger les sources</a></p></div>
 							</div>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 			</div>
 	
-	<?php }
-	
-	?>
+	<?php } ?>
 		</div><!-- /row-->
     
 <?php require_once("footer.php"); ?>   
