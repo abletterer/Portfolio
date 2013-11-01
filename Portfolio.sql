@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 22 Septembre 2013 à 20:17
+-- Généré le: Ven 01 Novembre 2013 à 20:10
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.4.3
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `competence` (
   `idCompetence` int(11) NOT NULL AUTO_INCREMENT,
-  `nomCompetence` varchar(50) NOT NULL,
-  `categorieCompetence` varchar(50) NOT NULL,
+  `nomCompetence` text NOT NULL,
+  `categorieCompetence` text NOT NULL,
   `noteCompetence` tinyint(4) NOT NULL,
   PRIMARY KEY (`idCompetence`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
@@ -72,21 +72,23 @@ CREATE TABLE IF NOT EXISTS `competenceexperience` (
 
 CREATE TABLE IF NOT EXISTS `experience` (
   `idExperience` int(11) NOT NULL AUTO_INCREMENT,
-  `nomExperience` varchar(50) NOT NULL,
+  `nomExperience` text NOT NULL,
   `dateDebutExperience` date NOT NULL,
   `dateFinExperience` date DEFAULT NULL,
-  `employeurExperience` varchar(50) NOT NULL,
-  `emplacementExperience` varchar(50) NOT NULL,
+  `employeurExperience` text NOT NULL,
+  `emplacementExperience` text NOT NULL,
   PRIMARY KEY (`idExperience`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `experience`
 --
 
 INSERT INTO `experience` (`idExperience`, `nomExperience`, `dateDebutExperience`, `dateFinExperience`, `employeurExperience`, `emplacementExperience`) VALUES
-(1, 'Premiere experience', '2013-09-04', '2013-09-05', 'Premier employeur', 'Premier emplacement'),
-(2, 'Deuxieme experience', '2013-09-02', '2013-09-03', 'Deuxième employeur', 'Deuxième emplacement');
+(3, 'Plusieurs travaux en tant que saisonnier', '2008-06-01', '2013-08-31', 'Schaeffler France, Musée Historique, Mc Donald''s', 'Haguenau, France'),
+(5, 'Projet Tutoré de DUT <br> <strong>Gestion et diffusion d''objets 3D</strong>', '2010-10-01', '2011-01-01', 'Chef de projet<br> Sous le tutorat de Pierre Kraemer', 'Université de Strasbourg'),
+(6, 'Stage de fin de DUT<br> <strong>Développeur JavaScript</strong>', '2011-03-01', '2011-06-01', 'REP Solutions Interactive Inc. <br> Sous le tutorat d''Alain Marceau', 'Québec, Canada'),
+(7, 'Travail d''Etude et de Recherche <br>\r\n<strong>Multi-Triangulation</strong>', '2013-02-01', '2013-05-01', 'Sous le tutorat de Lionel Untereiner et Pierre Kraemer', 'Université de Strasbourg');
 
 -- --------------------------------------------------------
 
@@ -96,18 +98,21 @@ INSERT INTO `experience` (`idExperience`, `nomExperience`, `dateDebutExperience`
 
 CREATE TABLE IF NOT EXISTS `formation` (
   `idFormation` int(11) NOT NULL AUTO_INCREMENT,
-  `nomFormation` varchar(100) NOT NULL,
-  `etablissementFormation` varchar(50) NOT NULL,
+  `nomFormation` text NOT NULL,
+  `etablissementFormation` text NOT NULL,
   `dateReussiteFormation` date NOT NULL,
   PRIMARY KEY (`idFormation`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `formation`
 --
 
 INSERT INTO `formation` (`idFormation`, `nomFormation`, `etablissementFormation`, `dateReussiteFormation`) VALUES
-(1, 'Baccalaurat Scientifique option Sciences de l''Ingénieur', 'LEGTI Alphonse Heinrich, Haguenau', '2009-06-30');
+(1, 'Baccalaurat Scientifique option Sciences de l''Ingénieur', 'LEGTI Alphonse Heinrich, Haguenau', '2009-06-30'),
+(2, 'DUT Informatique', 'IUT Robert Schuman, Université de Strasbourg', '2011-06-01'),
+(3, 'Licence Informatique', 'UFR Mathématique-Informatique, Université de Strasbourg', '2012-06-01'),
+(4, 'Master Informatique, Option Sciences de l''Image', 'UFR Mathématique-Informatique, Université de Strasbourg', '2014-06-01');
 
 -- --------------------------------------------------------
 
@@ -119,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `idProjet` int(11) NOT NULL AUTO_INCREMENT,
   `nomProjet` varchar(50) NOT NULL,
   `descriptionProjet` text NOT NULL,
-  `imageProjet` varchar(50) NOT NULL,
-  `urlProjet` varchar(50) NOT NULL,
+  `imageProjet` text NOT NULL,
+  `urlProjet` text NOT NULL,
   `auteurProjet` text NOT NULL,
   PRIMARY KEY (`idProjet`),
   UNIQUE KEY `nomProjet` (`nomProjet`)
