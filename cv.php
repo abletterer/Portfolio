@@ -12,12 +12,6 @@ catch (Exception $e) {
 $stmt = $pdo->query("SELECT * FROM competence ORDER BY categorieCompetence");
 $competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $pdo->query("SELECT * FROM experience ORDER BY dateDebutExperience");
-$experiences = $stmt->fetchAll(PDO::FETCH_BOTH);
-
-$stmt = $pdo->query("SELECT idFormation, nomFormation, dateReussiteFormation, etablissementFormation FROM formation ORDER BY dateReussiteFormation");
-$formations = $stmt->fetchAll(PDO::FETCH_BOTH);
-
 $lastCategorie = "";
 ?>
 
@@ -52,8 +46,10 @@ $lastCategorie = "";
 ?>
         <div class="col-xs-6">
             <p style="margin:0px; letter-spacing:1px; font-size:18px; text-indent:0;"><?php echo $competence['nomCompetence']; ?></p>
-            <div class="progress progress-striped" onmouseover="this.className='progress progress-striped active'" onmouseout="this.className='progress progress-striped'" style="height:10px;">
-                <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $competence['noteCompetence']; ?>%; height:10px;">
+            <div class="progress progress-striped" style="height:15px;">
+                <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="
+					<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" 
+					 style="width: <?php echo $competence['noteCompetence']; ?>%; height:15px;">
                     <span class="sr-only"><?php echo $competence['noteCompetence']; ?>% Complete (success)</span>
                 </div>
             </div>
@@ -64,56 +60,27 @@ $lastCategorie = "";
 ;?>
     </div>
     
-<?php /*
-*
-* Partie EXPERIENCE PROFESSIONNELLE
-*
-*/ ?>
+<?php 
+	/*
+	*
+	* Partie EXPERIENCE PROFESSIONNELLE
+	*
+	*/ 
+?>
     <h1  class="title-h1-activable">Expérience professionnelle<img class="fleche-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
     <!-- TABLEAU D'EXPERIENCE-->
     <table class="table table-hover">
-        <thead>
-            <tr>
-        
-<?php
-    $colonnes = array_keys($experiences[0]);
-    $nbcolonnes = 0;
-    foreach($colonnes as $colonne) {
-        ++$nbcolonnes;
-        if(!is_numeric($colonne) && $colonne!="idExperience") {
-            switch($colonne) {
-            case "nomExperience" : 
-                echo "<th>&nbsp;</th>";
-            break;
-            case "dateDebutExperience" : 
-                echo "<th>Début</th>";
-            break;
-            case "dateFinExperience" : 
-                echo "<th>Fin</th>";
-            break;
-            case "employeurExperience" : 
-                echo "<th>Employeur</th>";
-            break;
-            case "emplacementExperience" : 
-                echo "<th>Emplacement</th>";
-            break;
-            case "referenceExperience" :
-                echo "<th>Référence(s)</th>";
-            default:
-            break;
-            }
-        }
-    }        
-?>
-
-		  </tr>
-        </thead>
         <tbody>
 <?php
+
+$stmt = $pdo->query("SELECT DATE_FORMAT(dateDebutExperience, '[%m/%Y]') AS dateDebut, DATE_FORMAT(dateFinExperience, '[%m/%Y]') AS dateFin, nomExperience, employeurExperience, emplacementExperience FROM experience ORDER BY dateDebutExperience DESC");
+$experiences = $stmt->fetchAll(PDO::FETCH_NUM);
+
         foreach($experiences as $experience) {
             echo "<tr>";
-            for($i=1;$i<$nbcolonnes/2;$i++) {
-                echo "<td>".$experience[$i]."</td>";
+			echo "<td style='font-size:30px; color:#499ca4; vertical-align:middle;'>".$experience[0]." ".$experience[1]."</td>";
+            for($i=2;$i<$stmt->columnCount();$i++) {
+                echo "<td style='vertical-align:middle;'>".$experience[$i]."</td>";
             }
             echo "</tr>";
         }
@@ -121,51 +88,34 @@ $lastCategorie = "";
         </tbody>
     </table>
 
+<?php 
+    /*
+    *
+    * Partie FORMATION
+    *
+    */
+?>
+
     <h1 class="title-h1-activable">Formation<img class="fleche-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
     
     <!-- Tableau de formation-->
-    <table class="table table-hover">
-        <thead>
-            <tr>
-            
-<?php 
-
-    $colonnes = array_keys($formations[0]);
-    $nbColonnes = 0;
-    foreach($colonnes as $colonne) {
-        ++$nbColonnes;
-        if(!is_numeric($colonne) && $colonne!="idFormation") {
-            switch($colonne) {
-                case "nomFormation" :
-                    echo "<th>&nbsp;</th>";
-                break;
-                case "dateReussiteFormation" :
-                    echo "<th>Année</th>";
-				break;
-                case "etablissementFormation" :
-                    echo "<th>Etablissement</th>";
-                default:
-                break;
-            }
-        }
-    }
-
-?>
-            
-            </tr>
-        </thead>   
+    <table class="table table-hover">  
         <tbody>
 <?php 
 
+$stmt = $pdo->query("SELECT DATE_FORMAT(dateReussiteFormation, '[%Y]') AS dateReussite, nomFormation, etablissementFormation FROM formation ORDER BY dateReussite DESC");
+$formations = $stmt->fetchAll(PDO::FETCH_NUM);
+
         foreach($formations as $formation) {
-            echo "<tr>";
-            for($i=1;$i<$nbColonnes/2;++$i) {
-				if($colonnes[$i*2]=="dateReussiteFormation") {
-                	echo "<td>".date("Y",strtotime($formation[$i]))."</td>";
-				}
-				else {
-                	echo "<td>".$formation[$i]."</td>";
-				}
+			if($formation[0]>date("[Y]")) {
+				//Si la date de reussite de formation est supérieure à la date courante
+            	echo "<tr style='opacity:0.3; border:none;'>";
+			}
+			else
+				echo "<tr>";
+			echo "<td style='font-size:30px; color:#499ca4; vertical-align:middle; border:none;'>".$formation[0]."</td>";
+            for($i=1;$i<$stmt->columnCount();++$i) {
+				echo "<td style='vertical-align:middle;'>".$formation[$i]."</td>";
 			}
             echo "</tr>";
         }

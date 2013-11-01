@@ -83,14 +83,7 @@ $(function() {
 
     $(".projet").hover(function() {}, function() {is_showing_v = false});
 
-    $("#image_captcha").hover(function() {
-        $(this).stop().popover("show");
-        setTimeout(function() {$("#image_captcha").stop().popover("hide")},1000);
-    }, function () {
-        $(this).stop().popover("hide");
-    });
-    
-    $("#image_captcha").next().hover(function() {
+    $("#div_captcha").hover(function() {
         $("#image_captcha").stop().popover("show");
         setTimeout(function() {$("#image_captcha").stop().popover("hide")},1000);
     }, function () {

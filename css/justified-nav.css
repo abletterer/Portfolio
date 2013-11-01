@@ -39,7 +39,6 @@ body {
 .nav-justified > .active > a:hover,
 .nav-justified > .active > a:focus {
     background-color: #ddd;
-    background-image: none;
     color:#fff;
     background-image: url("../img/bluemesh.png");
 }

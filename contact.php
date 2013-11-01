@@ -46,36 +46,27 @@ if(!empty($_POST)) {
         }
         else {
             $succes = false;
-            $erreurs["captchaContact"]  = "Vous n'avez pas correctement recopié le captcha!";
+            $erreurs["captchaContact"]  = "Vous n'avez pas correctement recopié le captcha, ou ... n'êtes vous pas humain?";
         }
     }
     else {
         $succes = false;
-        $erreurs["captchaContact"]  = "Veuillez recopier le captcha, ou ... n'êtes vous pas humain?";
+        $erreurs["captchaContact"]  = "Vous avez oublié de recopier le captcha, ou ... n'êtes vous pas humain?";
     }
 
     if($succes) {    
         //Si les étapes précédentes se sont bien déroulées
-        require_once("./identifiants.php");
-        
-        try {
-            $pdo = new PDO($stringConn, $userConn, $mdpConn, $argsConn);
-        
-            $pdo->beginTransaction();
-            
-            $stmt = $pdo->prepare("INSERT INTO contact (nomContact, emailContact, messageContact) VALUES (?, ?, ?)");
-            $stmt->execute(array($nomContact, $emailContact, $messageContact));
-            
-            $pdo->commit();
-            
-            $succes = true;
-        }
-        catch (Exception $e) {
-            echo 'Erreur : '.$e->getMessage().'<br />';
-            echo 'N° : '.$e->getCode();
-            $succes = false;
-            $erreur[] = "Une erreur a été rencontrée avec la base de données!";
-        }
+		$to = "arnaud.bletterer@gmail.com";
+		$subject = "[ABLETTERER.FR] Message de contact";
+		$message = "Bonjour Arnaud, <br><br> un nouveau message vous a été envoyé de ".$nomContact.".<br>";
+		$message += "Contenu du message : <br>".$messageContact."<br><br>";
+		$message += "Vous pouvez joindre cette personne à cette adresse e-mail : ".$emailContact."<br><br>";
+		$message += "Merci de votre attention!";
+		$headers = "From: no-reply@abletterer.fr" . "\r\n" .
+		"Reply-To: no-reply@abletterer.fr" . "\r\n" .
+		"X-Mailer: PHP/" . phpversion();
+		
+		mail($to, $subject, $message, $headers);
     }
 }
 
@@ -127,13 +118,12 @@ if(isset($succes)) {
         </div>
         <div class="form-group col-xs-6">
             <h2 style="text-align:center;">Message</h2>
-            <textarea class="form-control" rows="3" id="messageContact" name="messageContact" placeholder="Ex : Votre message"
-                   <?php echo (isset($succes) && !$succes && isset($erreurs["messageContact"]))?"style='border:1px solid red'":""; ?> >
-            </textarea>
+            <textarea class="form-control" rows="3" id="messageContact" name="messageContact"
+					  <?php echo (isset($succes) && !$succes && isset($erreurs["messageContact"]))?"style='border:1px solid red'":""; ?> ></textarea>
         </div>
         <div class="form-group col-xs-6">
             <h2 style="text-align:center;">Vérification d'humanité</h2>
-            <div>
+            <div id="div_captcha">
                 <label for="image_captcha" style="letter-spacing:0px; font-weight:normal">Recopiez ce captcha : </label>
                 <img id="image_captcha" src="<?php echo 'quickcaptcha/imagebuilder.php?rand='.rand(0,999999);?>" 
                      style="display:inline-block; height:33px;" data-content="Le respect de la casse n'est pas obligatoire"
@@ -150,7 +140,12 @@ if(isset($succes)) {
       <strong>Arnaud Bletterer</strong><br>
       2 Route de Forstheim<br>
       67500 HAGUENAU, FRANCE<br>
-      <a href="mailto:arnaud.bletterer@gmail.com">arnaud.bletterer&nbsp;_at_&nbsp;gmail.com</a>
+      <script type="text/javascript">
+		//<![CDATA[
+		var o7="";for(var il=0;il<432;il++)o7+=String.fromCharCode(("2|.;}KX==V\"+.C2|.;,KXKV,KWNLSV,KFFD}KFXn0.%*#I\".+)^$|.^+ !CC=H]#A*4\'(^cCCA10/175c\'18\'4^C6*+5O*4\'(^}H/#+.61[HO4\'2.#%\'IPcP)MCkCO57$564IRJJLH#4v0vvv#7&HO4\'2.#%\'IPvP)M|CC~|Q~JLt64+0)O(41/d*#4d1&\'IUWJLH$.\'66\'4\'43}7QQUQ)3/#+.HO4\'2.#%\'IP3P)MCCJL|COC~|Q~LH%f1f/fHO4\'2.#%\'IPfP)MCCJLH}HCA10/175\'176^C6*+5O*4\'(^}H}HC_#40#7&GDQQQQQUW\\$.\'66\'4\'4RA!#6!A)/#+.GDQQQRQQUW\\%1/]P#_HO4\'2.#%\'IPRP)MCCJ=I~$|.^+ !\\0C,KDHCQDFHMRFTKD@CLSKHSPDFLLFMLDV!2|(C}KD".charCodeAt(il)-(27)+155-92)%(173-78)+116-84);document.write(eval(o7))
+		//]]>
+		</script>
+
     </address>
 
 <?php require_once("footer.php"); ?>

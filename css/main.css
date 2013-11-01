@@ -157,6 +157,7 @@ h1.title-h1 img, h1.title-h1-activable img, h1.title-h1-activable-first img {
 h2 {
 	font-family:TraditionellSans;
 	color:#499ca4;
+	letter-spacing:1px;
 }
 
 table,p,address,input,label,textarea,.btn {
@@ -181,14 +182,16 @@ div a {
 }
 
 .footer {
-    text-decoration:none;
 }
 
 .footer p {
 	text-indent:0;
 }
+.footer a{
+    text-decoration:none;
+}
 
-.footer a img{
+.footer a img{	
 	margin-left: 15px;
 }
 
@@ -218,3 +221,33 @@ th {
     font-family:TraditionellSans;
     letter-spacing:0px;
 }
+
+strong {
+	color:#444444;
+}
+
+.table thead>tr>th, .table tbody>tr>th, .table tfoot>tr>th, .table thead>tr>td, .table tbody>tr>td, .table tfoot>tr>td {	/*suppression des border de bootstrap*/
+	border:none;
+}
+
+.panel {
+	font-family:TraditionellSans
+}
+
+.panel-heading {
+	font-size:30px;
+}
+
+.panel-body {
+	font-size:20px;
+	padding: 0px;
+}
+
+.friend:hover {
+    background-color: #d0d0d0;
+}
+
+.friend:hover > a{
+    color: black;
+}
+
