@@ -58,12 +58,12 @@ if(!empty($_POST)) {
         //Si les étapes précédentes se sont bien déroulées
 		$to = "arnaud.bletterer@gmail.com";
 		$subject = "[ABLETTERER.FR] Message de contact";
-		$message = "Bonjour Arnaud, <br><br> un nouveau message vous a été envoyé de ".$nomContact.".<br>";
-		$message += "Contenu du message : <br>".$messageContact."<br><br>";
-		$message += "Vous pouvez joindre cette personne à cette adresse e-mail : ".$emailContact."<br><br>";
-		$message += "Merci de votre attention!";
+		$message = "Bonjour Arnaud, \n\nUn nouveau message vous a été envoyé de ".$nomContact.".\n";
+		$message .= "Contenu du message : \n\t".$messageContact."\n\n";
+		$message .= "Vous pouvez joindre cette personne à cette adresse e-mail : ".$emailContact."\n\n";
+		$message .= "Merci de votre attention!";
 		$headers = "From: no-reply@abletterer.fr" . "\r\n" .
-		"Reply-To: no-reply@abletterer.fr" . "\r\n" .
+		"Reply-To: ". $emailContact . "\r\n" .
 		"X-Mailer: PHP/" . phpversion();
 		
 		mail($to, $subject, $message, $headers);

@@ -85,7 +85,7 @@ $(function() {
 
     $("#div_captcha").hover(function() {
         $("#image_captcha").stop().popover("show");
-        setTimeout(function() {$("#image_captcha").stop().popover("hide")},1000);
+        setTimeout(function() {$("#image_captcha").stop().popover("hide")},3000);
     }, function () {
         $("#image_captcha").stop().popover("hide");
     });
