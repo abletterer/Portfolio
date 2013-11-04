@@ -9,7 +9,13 @@
         <img class="normal" src="<?php echo updateURL('img/css3-logo.png'); ?>"alt="CSS3" title="CSS3" style="height:48px;">
     </a>
     <p style="padding-top:10px; float:right;">&copy; Arnaud Bletterer 2013 - Powered by <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>
-	</p>
+    </p>
+   
+<?php
+	Locale::setDefault("fr-FR");
+	echo "<p style='padding-top:10px; float:left;'>Page modifiée le " . date("d/m/Y.", getlastmod())."</p>";
+?>
+
 </div>
     
 </div> <!-- /container -->

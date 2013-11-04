@@ -16,7 +16,13 @@ $lastCategorie = "";
 ?>
 
 <?php require_once("header.php"); ?>
-    
+
+<div class="row" style="margin-top:20px; margin-bottom:20px;">
+	<div class="col-xs-12" style="text-align:center;">
+		<a type="button" class="btn btn-primary btn-lg" href="<?php echo updateURL('Doc/cv.pdf'); ?>" target="_blank">Télécharger la version PDF</a>
+	</div>
+</div>
+
 <?php 
     /*
     *
@@ -30,63 +36,23 @@ $lastCategorie = "";
 <?php foreach($competences as $competence) {
     if($lastCategorie=="") {
         //Première itération
-        echo "<div class='col-xs-6'>";
+        echo "<div class='col-xs-12'>";
     }
     
     if($competence["categorieCompetence"]!=$lastCategorie) { 
         //Changement de catégorie
-        if($lastCategorie!="") echo "</div><div class='col-xs-6'>";
+        if($lastCategorie!="") echo "</div><div class='col-xs-12'>";
         $lastCategorie = $competence["categorieCompetence"];
-        echo "<h2 style='text-align:center;'>".$lastCategorie."</h2>";
+        echo "<p><strong>".$lastCategorie.":</strong> ".$competence['nomCompetence'];
     }
-    
-    if($competence["noteCompetence"]>70) $typeBar = "progress-bar-success";
-    elseif($competence["noteCompetence"]>40) $typeBar = "progress-bar-warning";
-    else $typeBar = "progress-bar-danger";
+	else 
+		echo ", ".$competence['nomCompetence'];
 ?>
-        <div class="col-xs-6">
-            <p style="margin:0px; letter-spacing:1px; font-size:18px; text-indent:0;"><?php echo $competence['nomCompetence']; ?></p>
-            <div class="progress progress-striped" style="height:15px;">
-                <div class="progress-bar <?php echo $typeBar; ?>" role="progressbar" aria-valuenow="
-					<?php echo $competence['noteCompetence']; ?>" aria-valuemin="0" aria-valuemax="100" 
-					 style="width: <?php echo $competence['noteCompetence']; ?>%; height:15px;">
-                    <span class="sr-only"><?php echo $competence['noteCompetence']; ?>% Complete (success)</span>
-                </div>
-            </div>
-        </div>
         
 <?php }
     if($lastCategorie!="") echo "</div>";   //Si au moins un élément a été trouvé dans la table
 ;?>
     </div>
-    
-<?php 
-	/*
-	*
-	* Partie EXPERIENCE PROFESSIONNELLE
-	*
-	*/ 
-?>
-    <h1  class="title-h1-activable">Expérience professionnelle<img class="fleche-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
-    <!-- TABLEAU D'EXPERIENCE-->
-    <table class="table table-hover">
-        <tbody>
-<?php
-
-$stmt = $pdo->query("SELECT DATE_FORMAT(dateDebutExperience, '[%m/%Y]') AS dateDebut, DATE_FORMAT(dateFinExperience, '[%m/%Y]') AS dateFin, nomExperience, employeurExperience, emplacementExperience FROM experience ORDER BY dateDebutExperience DESC");
-$experiences = $stmt->fetchAll(PDO::FETCH_NUM);
-
-        foreach($experiences as $experience) {
-            echo "<tr>";
-			echo "<td style='font-size:30px; color:#499ca4; vertical-align:middle;'>".$experience[0]." ".$experience[1]."</td>";
-            for($i=2;$i<$stmt->columnCount();$i++) {
-                echo "<td style='vertical-align:middle;'>".$experience[$i]."</td>";
-            }
-            echo "</tr>";
-        }
-?>
-        </tbody>
-    </table>
 
 <?php 
     /*
@@ -122,6 +88,34 @@ $formations = $stmt->fetchAll(PDO::FETCH_NUM);
 
 ?>
         </tbody> 
+    </table>
+    
+<?php 
+	/*
+	*
+	* Partie EXPERIENCE
+	*
+	*/ 
+?>
+    <h1  class="title-h1-activable">Expérience<img class="fleche-bas" src="<?php echo updateURL('img/fleche-bas.gif'); ?>" alt="Fleche Bas"/><input type="hidden" value='inactive'/></h1>
+    <!-- TABLEAU D'EXPERIENCE-->
+    <table class="table table-hover">
+        <tbody>
+<?php
+
+$stmt = $pdo->query("SELECT DATE_FORMAT(dateDebutExperience, '[%m/%Y]') AS dateDebut, DATE_FORMAT(dateFinExperience, '[%m/%Y]') AS dateFin, nomExperience, employeurExperience, emplacementExperience FROM experience ORDER BY dateDebutExperience DESC");
+$experiences = $stmt->fetchAll(PDO::FETCH_NUM);
+
+        foreach($experiences as $experience) {
+            echo "<tr>";
+			echo "<td style='font-size:30px; color:#499ca4; vertical-align:middle;'>".$experience[0]." ".$experience[1]."</td>";
+            for($i=2;$i<$stmt->columnCount();$i++) {
+                echo "<td style='vertical-align:middle;'>".$experience[$i]."</td>";
+            }
+            echo "</tr>";
+        }
+?>
+        </tbody>
     </table>
     
     

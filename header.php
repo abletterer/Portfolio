@@ -52,6 +52,12 @@
                 <img class="normal" src="<?php echo updateURL('img/abletterer-logo.png'); ?>" alt="Logo ABletterer">
             </a>
             <span class="social">
+            	<span>
+                    <a href="https://github.com/abletterer" target="_blank">
+                        <img class="hover" src="<?php echo updateURL('img/github-logo-hover.png'); ?>" alt="Logo GitHub" style="position:absolute; height:48px; opacity:0;">
+                        <img class="normal" src="<?php echo updateURL('img/github-logo-hover.png'); ?>" alt="Logo GitHub" style="height:48px;">
+                    </a>
+                </span>
                 <span>
                     <a href="https://www.facebook.com/abletterer" target="_blank">
                         <img class="hover" src="<?php echo updateURL('img/facebook-logo-hover.png'); ?>" alt="Logo Facebook" style="position:absolute; height:48px; opacity:0;">
@@ -60,13 +66,13 @@
                 </span>
                 <span>
                     <a href="https://www.twitter.com/abletterer" target="_blank">
-                        <img class="hover" src="<?php echo updateURL('img/twitter-logo-hover.png'); ?>" alt="Logo Facebook" style="position:absolute; height:48px; opacity:0;">
-                        <img class="normal" src="<?php echo updateURL('img/twitter-logo.png'); ?>" alt="Logo Twitter"style="height:48px;">
+                        <img class="hover" src="<?php echo updateURL('img/twitter-logo-hover.png'); ?>" alt="Logo Twitter" style="position:absolute; height:48px; opacity:0;">
+                        <img class="normal" src="<?php echo updateURL('img/twitter-logo.png'); ?>" alt="Logo Twitter" style="height:48px;">
                     </a>
                 </span>
                 <span>
                     <a href="https://plus.google.com/115104367788742954625/about" target="_blank">
-                        <img class="hover" src="<?php echo updateURL('img/googleplus-logo-hover.png'); ?>" alt="Logo Facebook" style="position:absolute; height:48px; opacity:0;">
+                        <img class="hover" src="<?php echo updateURL('img/googleplus-logo-hover.png'); ?>" alt="Logo Google Plus" style="position:absolute; height:48px; opacity:0;">
                         <img class="normal" src="<?php echo updateURL('img/googleplus-logo.png'); ?>" alt="Logo Google Plus" style="height:48px;">
                     </a>
                 </span>

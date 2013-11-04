@@ -10,6 +10,16 @@ catch (Exception $e) {
 }
 
 require_once("header.php");
+
+?>
+
+<div class="row" style="margin-top:20px; margin-bottom:20px;">
+	<div class="col-xs-12" style="text-align:center;">
+		<a type="button" class="btn btn-primary btn-lg" href="https://github.com/abletterer" target="_blank">Mes autres projets sur GitHub</a>
+	</div>
+</div>
+
+<?php
 	$stmt = $pdo->query("SELECT * FROM projet");
 	
 	$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);

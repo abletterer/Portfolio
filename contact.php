@@ -136,7 +136,7 @@ if(isset($succes)) {
     <button type="submit" class="btn btn-default">Envoyer</button> 
     </form>
     
-    <address style="letter-spacing:1spx; font-size:18px; text-align:center;">
+    <address style="letter-spacing:0px; text-align:center;">
       <strong>Arnaud Bletterer</strong><br>
       2 Route de Forstheim<br>
       67500 HAGUENAU, FRANCE<br>

@@ -120,7 +120,6 @@ body {
 }
 
 .footer {
-    border-top-color: #ddd;
     text-decoration:none;
 }
 
@@ -165,6 +164,14 @@ table,p,address,input,label,textarea,.btn {
 	font-size:20px;
 }
 
+.form-control {
+	font-size:20px;
+}
+
+textarea{ 
+	resize:vertical;
+}
+
 p {
 	text-indent:2em;
 }
@@ -182,6 +189,7 @@ div a {
 }
 
 .footer {
+	border:none;
 }
 
 .footer p {
